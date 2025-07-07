@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'assets/css/accounts.css' %}">{% endblock css %}
+{% block content %}
+
+
+    <section class="accounts_section">
+        <div class="container">
+            <div class="accounts_main">
+                <div class="accounts_left_main">
+                    <div class="accounts_left_img"></div>
+                </div>
+                <div class="accounts_right_main">
+                    <div class="accounts_right_card_body_div">
+                        <div class="accounts_right_card_logo_div">
+                            <img src="{% static 'assets/img/login_logo.svg' %}" alt="">
+                            <h2>Please Enter the OTP</h2>
+                        </div>
+                        {% if messages %}
+                        <div class="messages haveText">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                        <form action="{% url 'accounts:verify-otp' %}" method="post">
+                        {% csrf_token %}
+                        <div class="accounts_right_card_inputs_main otpInputGroup d-flex">
+                            <div class="accounts_right_card_input_inner">
+                                <input class="otpInput" type="text" maxlength="1" required>
+                            </div>
+                            <div class="accounts_right_card_input_inner">
+                              <input class="otpInput" type="text" maxlength="1" required>
+                          </div>
+                          <div class="accounts_right_card_input_inner">
+                              <input class="otpInput" type="text" maxlength="1" required>
+                          </div>
+                          <div class="accounts_right_card_input_inner">
+                              <input class="otpInput" type="text" maxlength="1" required>
+                          </div>
+                          <input type="hidden" id="otp" name="otp" >
+            
+                        </div>
+                        <div class="accounts_btn">
+                            <button type="submit" onclick="combineOTP()">Verify</button>
+                        </div>
+                    </form>
+                        <p class="last_text">Don’t have an account?<a href="{% url "accounts:signup" %}"> Sign Up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('form_name2');
+        const passwordIcon = document.getElementById('passwordIcon');
+
+        passwordIcon.addEventListener('click', function() {
+            // Toggle password visibility
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('bi-eye');
+                passwordIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('bi-eye-slash');
+                passwordIcon.classList.add('bi-eye');
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const otpInputs = document.querySelectorAll('.otpInput');
+
+      otpInputs.forEach((input, index) => {
+          input.addEventListener('input', function () {
+              // Only allow digits
+              this.value = this.value.replace(/[^0-9]/g, '');
+
+              // If a digit is entered, move to the next input
+              if (this.value.length === 1 && index < otpInputs.length - 1) {
+                  otpInputs[index + 1].focus();
+              }
+          });
+
+          input.addEventListener('keydown', function (event) {
+              // Allow backspace to move to the previous input
+              if (event.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                  otpInputs[index - 1].focus();
+              }
+          });
+      });
+  });
+
+  function combineOTP() {
+  let otp = '';
+  console.log('otp funtion')
+  const inputs = document.querySelectorAll('.otpInput');
+  inputs.forEach(input => {
+      otp += input.value;
+  });
+  document.getElementById('otp').value = otp;
+}
+    </script>
+
+{% endblock script %}

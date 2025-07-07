@@ -1,0 +1,155 @@
+
+{% load static %}
+{% comment %} {% load socialaccount %} {% endcomment %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'assets/css/accounts.css' %}">{% endblock css %}
+{% block content %}
+
+
+<section class="accounts_section">
+    <div class="container">
+        <div class="accounts_main">
+            <div class="accounts_left_main">
+                <div class="accounts_left_img"></div>
+            </div>
+            <div class="accounts_right_main">
+                <div class="accounts_right_card_body_div">
+                    <div class="accounts_right_card_logo_div">
+                        <img src="{% static 'assets/img/login_logo.svg' %}" alt="">
+                        <h2>Welcome Back</h2>
+                    </div>
+                    {% if messages %}
+                    <div class="messages haveText">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <form action="{% url 'accounts:login' %}" id="login-form" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="accounts_right_card_inputs_main">
+                            <div class="accounts_right_card_input_inner">
+                                <input id="form_name1" type="text" name="email" required>
+                                <label for="form_name1">Email</label>
+                                <img src="{% static 'assets/img/carbon_email.svg' %}" alt="">
+                            </div>
+                            <div class="accounts_right_card_input_inner">
+                                <input id="form_name2" type="password" name="password" required>
+                                <label for="form_name2">Password</label>
+                                <img src="{% static 'assets/img/password.svg' %}" alt="">
+                                <i id="passwordIcon" class="bi bi-eye" style="cursor: pointer;"></i>
+                            </div>
+                            <div class="forgot_pass">
+                                <a href="{% url 'accounts:forgot-password' %}">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="accounts_btn">
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                    <div class="or_text">
+                        <label for="">Or Log In With</label>
+                    </div>
+                    <div class="accounts_social_icons_main">
+                        {% comment %} <a href="{% provider_login_url 'google' %}" class="text-decoration-none">
+                            <div class="accounts_social_icons_inner">
+                                <img src="{% static 'assets/img/google.svg' %}" alt="">
+                                <p class="d-inline ms-2">Google</p>
+                            </div>
+                        </a>
+                        <a href="{% provider_login_url 'facebook' %}" class="text-decoration-none">
+                            <div class="accounts_social_icons_inner">
+                                <img src="{% static 'assets/img/facebook.svg' %}" alt="">
+                                <p class="d-inline ms-2">Facebook</p>
+                            </div>
+                        </a>
+          {% endcomment %}
+                    </div>
+                    <p class="last_text">Don’t have an account?<a href="{% url 'accounts:signup' %}"> Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+{% block script %}
+ <!-- Facebook SDK for JavaScript -->
+
+ <script>
+
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '877680230954492',
+        xfbml      : true,
+        version    : 'v23.0'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('form_name2');
+        const passwordIcon = document.getElementById('passwordIcon');
+
+        passwordIcon.addEventListener('click', function () {
+            // Toggle password visibility
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('bi-eye');
+                passwordIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('bi-eye-slash');
+                passwordIcon.classList.add('bi-eye');
+            }
+        });
+    });
+
+const validation = new JustValidate('#login-form', {
+    errorFieldCssClass: 'input-error',
+  });
+  
+    validation
+      .addField('#form_name1', [
+        {
+          rule: 'required',
+          errorMessage: 'Email is required.',
+        },
+        {
+          rule: 'email',
+          errorMessage: 'Enter a valid email address.',
+        },
+      ])
+      .addField('#form_name2', [
+        {
+          rule: 'required',
+          errorMessage: 'Password is required.',
+        },
+      ])
+      .onSuccess((event) => {
+        event.target.submit(); // ✅ manually submit the form if valid
+      });
+
+  
+</script>
+
+{% endblock script %}

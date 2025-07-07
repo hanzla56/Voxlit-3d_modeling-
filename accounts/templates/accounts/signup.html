@@ -1,0 +1,331 @@
+
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block css %}<link rel="stylesheet" href="{% static 'assets/css/accounts.css' %}">{% endblock css %}
+{% block content %}
+
+
+    <section class="accounts_section">
+        <div class="container">
+            <div class="accounts_main">
+                <div class="accounts_left_main">
+                    <div class="accounts_left_img accountLeftImage"></div>
+                </div>
+                <div class="accounts_right_main accountRightMain">
+                    <div class="accounts_right_card_body_div">
+                        <div class="accounts_right_card_logo_div">
+                            <img src="{% static 'assets/img/login_logo.svg' %}" alt="">
+                            <h2>Create Account</h2>
+                        </div>
+                        {% if messages %}
+                            <div class="messages haveText">
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    <form action="{% url 'accounts:register' %}" id="register-form" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="accounts_right_card_inputs_main">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="accounts_right_card_input_inner">
+                                        <input id="form_name3" type="text" name="username" maxlength="50" required>
+                                        <label for="form_name3">user name</label>
+                                        <img src="{% static 'assets/img/ph_user.svg' %}" alt="">
+                                        <small class="error-msg" id="error-first-name" style="display:none; color:red;">First name is required.</small>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="accounts_right_card_input_inner">
+                                <input id="form_name1" type="email" name="email" required>
+                                <label for="form_name1">Email</label>
+                                <img src="{% static 'assets/img/carbon_email.svg' %}" alt="">
+                                <small class="error-msg" id="error-email" style="display:none; color:red;">Email is required.</small>
+                            </div>
+                            <div class="accounts_right_card_input_inner">
+                                <input id="form_name2" type="password" name="password1" required>
+                                <label for="form_name2">Password</label>
+                                <img src="{% static 'assets/img/password.svg' %}" alt="">
+                                <i id="passwordIcon" class="bi bi-eye" style="cursor: pointer;"></i>
+                                <small class="error-msg" id="error-password" style="display:none; color:red;">Password is required.</small>
+                            </div>
+                            <div class="accounts_right_card_input_inner">
+                                <input id="form_name2" type="password" name="password2" required>
+                                <label for="form_name2">Confirm Password</label>
+                                <img src="{% static 'assets/img/password.svg' %}" alt="">
+                                <i id="passwordIcon" class="bi bi-eye" style="cursor: pointer;"></i>
+                                <small class="error-msg" id="error-password" style="display:none; color:red;">Password is required.</small>
+                            </div>
+                           <div class="terms_text_main">
+                            <div class="terms_text_inner">
+                                <div class="signup_circle"></div>
+                                <p>Password Strength: <span id="password-strength">Weak</span></p>
+                            </div>
+                            <div class="terms_text_inner">
+                                <div class="signup_circle active_conditions"></div>
+                                <p>Atleast One Capital Letter</p>
+                            </div>
+                            <div class="terms_text_inner">
+                                <div class="signup_circle"></div>
+                                <p>Contains a number or symbol (e.g., #, ? , ! , &)</p>
+                            </div>
+                            <div class="terms_text_inner">
+                                <div class="signup_circle"></div>
+                                <p>Atleast 8 characters</p>
+                            </div>
+                            {% comment %} <div class="terms_text_inner">
+                                <p>By Signing Up, you agree with our <a href="{% url 'websiteDesign:terms-conditions' %}">Terms & Conditions</a>, and <a href="{% url 'websiteDesign:privacy-policy' %}">Privacy Policy</a></p>
+                            </div> {% endcomment %}
+                           </div>
+                        </div>
+                        <div class="accounts_btn">
+                            <button type="submit" id="signup-link">Create Account</button>
+                        </div>
+                    </form>
+                        <div class="or_text">
+                            <label for="">Or Sign Up With</label>
+                        </div>
+                        <div class="accounts_social_icons_main">
+                            <a href="{% provider_login_url 'google' %}" class="text-decoration-none">
+                                <div class="accounts_social_icons_inner">
+                                    <img src="{% static 'assets/img/google.svg' %}" alt="">
+                                    <p class="d-inline ms-2">Google</p>
+                                </div>
+                            </a>
+                            <a href="{% provider_login_url 'facebook' %}" class="text-decoration-none">
+                                <div class="accounts_social_icons_inner">
+                                    <img src="{% static 'assets/img/facebook.svg' %}" alt="">
+                                    <p class="d-inline ms-2">Facebook</p>
+                                </div>
+                            </a>
+                            </a>
+                        </div>
+                        <p class="last_text">Already have an account?<a href="{% url 'accounts:login' %}" > Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('form_name2');
+        const passwordIcon = document.getElementById('passwordIcon');
+
+        passwordIcon.addEventListener('click', function() {
+            // Toggle password visibility
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('bi-eye');
+                passwordIcon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('bi-eye-slash');
+                passwordIcon.classList.add('bi-eye');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+    const passwordInput = $('#form_name2');
+    const strengthText = $('#password-strength');
+    const signupLink = $('#signup-link');
+
+    // Select each condition circle by their order (or give them IDs for better targeting)
+    const capitalCheck = $('.signup_circle').eq(1);      // Capital letter
+    const numberCheck = $('.signup_circle').eq(2);       // Number/symbol
+    const lengthCheck = $('.signup_circle').eq(3);       // Length
+    const strengthCheck = $('.signup_circle').eq(0);     // Overall strength (optional)
+
+    passwordInput.on('input', function () {
+        const password = passwordInput.val();
+        const isCapital = /[A-Z]/.test(password);
+        const isNumberSymbol = /[0-9!@#$%^&*(),.?":{}|<>]/.test(password);
+        const isLongEnough = password.length >= 8;
+
+        // Toggle condition styles
+        capitalCheck.toggleClass('active_conditions', isCapital);
+        numberCheck.toggleClass('active_conditions', isNumberSymbol);
+        lengthCheck.toggleClass('active_conditions', isLongEnough);
+
+        // Determine overall strength
+        let strength = "Weak";
+        if (isLongEnough && isCapital && isNumberSymbol) {
+            strength = "Strong";
+            strengthCheck.addClass('active_conditions');
+        } else if (isLongEnough) {
+            strength = "Medium";
+            strengthCheck.removeClass('active_conditions');
+        } else {
+            strength = "Weak";
+            strengthCheck.removeClass('active_conditions');
+        }
+
+        // Update text
+        strengthText.text(strength);
+
+        // Enable or disable sign-up link
+        if (isCapital && isNumberSymbol && isLongEnough) {
+            signupLink.removeClass('disabled').prop('disabled', false);
+        } else {
+            signupLink.addClass('disabled').prop('disabled', true);
+        }
+    });
+});
+
+$(document).ready(function () {
+    const passwordInput = $('#form_name2');
+    const strengthText = $('#password-strength');
+    const signupLink = $('#signup-link');
+
+    // Select each condition circle by their order (or give them IDs for better targeting)
+    const capitalCheck = $('.signup_circle').eq(1);      // Capital letter
+    const numberCheck = $('.signup_circle').eq(2);       // Number/symbol
+    const lengthCheck = $('.signup_circle').eq(3);       // Length
+    const strengthCheck = $('.signup_circle').eq(0);     // Overall strength (optional)
+
+    passwordInput.on('input', function () {
+        const password = passwordInput.val();
+        const isCapital = /[A-Z]/.test(password);
+        const isNumberSymbol = /[0-9!@#$%^&*(),.?":{}|<>]/.test(password);
+        const isLongEnough = password.length >= 8;
+
+        // Toggle condition styles
+        capitalCheck.toggleClass('active_conditions', isCapital);
+        numberCheck.toggleClass('active_conditions', isNumberSymbol);
+        lengthCheck.toggleClass('active_conditions', isLongEnough);
+
+        // Determine overall strength
+        let strength = "Weak";
+        if (isLongEnough && isCapital && isNumberSymbol) {
+            strength = "Strong";
+            strengthCheck.addClass('active_conditions');
+        } else if (isLongEnough) {
+            strength = "Medium";
+            strengthCheck.removeClass('active_conditions');
+        } else {
+            strength = "Weak";
+            strengthCheck.removeClass('active_conditions');
+        }
+
+        // Update text
+        strengthText.text(strength);
+
+        // Enable or disable sign-up link
+        if (isCapital && isNumberSymbol && isLongEnough) {
+            signupLink.removeClass('disabled').prop('disabled', false);
+        } else {
+            signupLink.addClass('disabled').prop('disabled', true);
+        }
+    });
+
+    
+});
+
+
+
+const validation = new JustValidate('#register-form', {
+  errorFieldCssClass: 'input-error',
+});
+
+  validation
+    .addField('#form_name3', [
+      {
+        rule: 'required',
+        errorMessage: 'First name is required.',
+      },
+    ])
+    .addField('#form_name4', [
+      {
+        rule: 'required',
+        errorMessage: 'Last name is required.',
+      },
+    ])
+    .addField('#form_name1', [
+      {
+        rule: 'required',
+        errorMessage: 'Email is required.',
+      },
+      {
+        rule: 'email',
+        errorMessage: 'Enter a valid email address.',
+      },
+    ])
+    .addField('#form_name2', [
+      {
+        rule: 'required',
+        errorMessage: 'Password is required.',
+      },
+      {
+        validator: (value) => {
+          return (
+            /[A-Z]/.test(value) &&
+            /[0-9!@#$%^&*(),.?":{}|<>]/.test(value) &&
+            value.length >= 8
+          );
+        },
+        errorMessage: 'Must contain at least 8 characters, one capital letter, and one symbol/number.',
+      }
+      
+    ])
+    .onSuccess((event) => {
+    event.target.submit(); // ✅ manually submit the form if valid
+  });
+    
+
+
+
+
+    // $(document).ready(function() {
+    //         const passwordInput = $('#form_name2');
+    //         const strengthText = $('#password-strength');
+    //         const strengthIcon = $('#strength-icon');
+    //         const capitalIcon = $('#capital-icon');
+    //         const numberSymbolIcon = $('#number-symbol-icon');
+    //         const lengthIcon = $('#length-icon');
+    //         const signupLink = $('#signup-link');
+
+    //         passwordInput.on('input', function() {
+    //             const password = passwordInput.val();
+    //             let strength = "Weak";
+    //             let isCapital = /[A-Z]/.test(password);
+    //             let isNumberSymbol = /[0-9!@#$%^&*(),.?":{}|<>]/.test(password);
+    //             let isLongEnough = password.length >= 8;
+
+    //             // Check password strength
+    //             if (isLongEnough && isCapital && isNumberSymbol) {
+    //                 strength = "Strong";
+    //                 strengthIcon.attr('src', "{% static 'assets/img/check_sign.svg' %}");
+    //             } else if (isLongEnough) {
+    //                 strength = "Medium";
+    //                 strengthIcon.attr('src', "{% static 'assets/img/un_check.svg' %}");
+    //             } else {
+    //                 strengthIcon.attr('src', "{% static 'assets/img/un_check.svg' %}");
+    //             }
+
+    //             // Update the strength text
+    //             strengthText.text(strength);
+
+    //             // Update icons based on checks
+    //             capitalIcon.attr('src', isCapital ? "{% static 'assets/img/check_sign.svg' %}" : "{% static 'assets/img/un_check.svg' %}");
+    //             numberSymbolIcon.attr('src', isNumberSymbol ? "{% static 'assets/img/check_sign.svg' %}" : "{% static 'assets/img/un_check.svg' %}");
+    //             lengthIcon.attr('src', isLongEnough ? "{% static 'assets/img/check_sign.svg' %}" : "{% static 'assets/img/un_check.svg' %}");
+
+    //             if (isCapital && isNumberSymbol && isLongEnough) {
+    //                 signupLink.removeClass('disabled').attr('href', "{% url 'accounts:register' %}");
+    //             } else {
+    //                 signupLink.addClass('disabled').removeAttr('href');
+    //             }
+    //         });
+    //     });
+    </script>
+{% endblock script %}
