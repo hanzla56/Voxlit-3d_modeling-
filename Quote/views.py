@@ -16,7 +16,10 @@ from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-
+def index(request):
+      return render(request,'Quote/full.html')
+  
+  
 def payment(request):
       return render(request,'Quote/payment.html')
 

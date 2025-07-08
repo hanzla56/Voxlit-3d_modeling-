@@ -3,7 +3,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('',payment,name='payment'),
+    path('',index,name='home'),
+    path('payment/',payment,name='payment'),
     path('test/',GetQuoteView.as_view(),name='test'),
     path('create-checkout-session/', CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
     path('success/', PaymentSuccessView.as_view(), name='payment-success'),

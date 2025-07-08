@@ -1,0 +1,94 @@
+.footer-color{
+      background: #233D700D;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+  }
+  .footer-email{
+      width: 488px;
+      height: 50px;
+      top: 551px;
+      left: 680px;
+      opacity: 1;
+      border-radius: 8px;
+      background: #7272721A;
+      border-width: 1px;
+      outline: none;
+      border: none;
+      padding: 12px 16px;
+  
+  }
+  footer button{
+      padding: 8px 20px;
+      background-color: #D7531B;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: all 0.4s ease;
+      border-radius: 8px;
+      font-weight: 500;
+  }
+  footer h4{
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 1px;
+  
+  }
+  
+  footer li,
+  footer p{
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 16px;
+      letter-spacing: 0%;
+      color: #666666;
+      }
+  
+  
+      footer li {
+          line-height: 34px;
+      }
+  
+  /* footer span{
+      background: #7272721A;
+      border-radius: 38px;
+      font-size: 15px;
+      padding: 9px;
+  } */
+  
+  footer span {
+      display: inline-block;
+      background-color: rgba(114, 114, 114, 0.1); /* more readable */
+      border-radius: 999px; /* more bulletproof for pill shape */
+      font-size: 15px;
+      padding: 6px 14px;
+      color: #444;
+      margin: 4px 6px 4px 0;
+  }
+  .contact-icon{
+      color: #D7531B;
+  }
+  
+  .social-icon{
+      background: #555555;
+      padding: 9px;
+      border-radius: 12px;
+      width: 40px;                /* Fixed square size */
+      height: 40px;
+      color: white;
+  }
+  
+  .social-icon:hover {
+      background: #D7531B;        /* On hover, turns orange */
+      color: white;
+    }
+  
+  .last-section{
+      background-color: #555555;
+  
+  }
