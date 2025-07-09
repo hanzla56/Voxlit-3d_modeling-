@@ -65,32 +65,280 @@
                 <div class="form-step">
                     <div class="form_step_content_main">
                         <div class="form_step_cont_title">
-                            <h2><span>Step 2:</span>Configure Your Print Settings</h2>
-                            <p>Upload your 3D model and we'll analyze it instantly to provide accurate pricing</p>
+                            <h2><span>Step 2:</span> Configure Your Print Settings</h2>
+                            <p>Choose your material, quality settings, and finishing options to customize your 3D print</p>
                         </div>
-                        <div class="form_cont_step1_upload_file" id="dropzone">
-                            <div class="dropzone-content">
-                                <img src="{% static 'assets/imgs/export.svg' %}" alt="Upload Icon" class="upload-icon">
-                                <h4>Drag and drop your file here</h4>
-                                <p>or click to browse your computer</p>
-                                <label class="browse-btn">
-                                    Browse File <img src="{% static 'assets/imgs/clipboardtext.svg' %}" alt="">
-                                    <input type="file" id="fileInput" hidden>
-                                </label>
+                        <div class="form_cont_step2_inner_main">
+                             <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form_cont_step_inputs">
+                                        <h5>3D Printing Technology</h5>
+                                        <select name="" id="" class="form-select">
+                                            <option value="option1" selected>FFF (Fused Filament Fabrication)</option>
+                                            <option value="option2">FFF (Fused Filament Fabrication) 2</option>
+                                            <option value="option3">FFF (Fused Filament Fabrication) 3</option>
+                                        </select>
+                                        <p>Most common and cost-effective for prototypes</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form_cont_step_inputs">
+                                        <h5>3D Printing Technology</h5>
+                                        <select name="" id="" class="form-select">
+                                            <option value="option1" selected>Standard (0.2mm)</option>
+                                            <option value="option2">Standard (0.3mm) </option>
+                                            <option value="option3">Standard (0.4mm) </option>
+                                        </select>
+                                    </div>
+                                </div>
+                             </div>
+                             <div class="material_selection_cards_main">
+                                <div class="step_title">
+                                    <h4>Material Selection</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="material_sel_card_body_div">
+                                            <div class="material_sel_card_txt1">
+                                                <div class="material_sel_card_txt1_inner">
+                                                    <img src="{% static 'assets/imgs/ms1.svg' %}" alt=".">
+                                                    <div>
+                                                        <h5>PLA (Polylactic Acid)</h5>
+                                                        <p>Easy to print, biodegradable</p>
+                                                    </div>
+                                                </div>
+                                                <span>$0.08/g</span>
+                                            </div>
+                                            <h6>Perfect for prototypes, decorative items, and low-stress applications. Print temp: 190-220°C</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="material_sel_card_body_div">
+                                            <div class="material_sel_card_txt1">
+                                                <div class="material_sel_card_txt1_inner">
+                                                    <img src="{% static 'assets/imgs/ms2.svg' %}" alt=".">
+                                                    <div>
+                                                        <h5>ABS</h5>
+                                                        <p>Strong, heat resistant</p>
+                                                    </div>
+                                                </div>
+                                                <span>$0.12/g</span>
+                                            </div>
+                                            <h6>Ideal for functional parts, automotive components. Print temp: 220-250°C</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="material_sel_card_body_div">
+                                            <div class="material_sel_card_txt1">
+                                                <div class="material_sel_card_txt1_inner">
+                                                    <img src="{% static 'assets/imgs/ms3.svg' %}" alt=".">
+                                                    <div>
+                                                        <h5>PETG </h5>
+                                                        <p>Chemical resistant, clear</p>
+                                                    </div>
+                                                </div>
+                                                <span>$0.15/g</span>
+                                            </div>
+                                            <h6>Great for food containers, medical devices. Print temp: 220-250°C</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                             <div class="print_quality_cards_main">
+                                <div class="step_title">
+                                    <h4>Print Quality</h4>
+                                </div>
+                                <div class="print_quality_cards_inner">
+                                    <div class="print_quality_card_body">
+                                        <h6>Draft</h6>
+                                        <p>0.3mm layers</p>
+                                        <span>Fastest</span>
+                                    </div>
+                                    <div class="print_quality_card_body">
+                                        <h6>Standard</h6>
+                                        <p>0.2mm layers</p>
+                                        <span>Balanced</span>
+                                    </div>
+                                    <div class="print_quality_card_body">
+                                        <h6>High</h6>
+                                        <p>0.1mm layers</p>
+                                        <span>Finest</span>
+                                    </div>
+                                </div>
+                             </div>
+                             <div class="infill_density_cards_main">
+                                <div class="step_title">
+                                    <h4>Infill Density</h4>
+                                </div>
+                                <div class="infill_den_progressbar_main">
+                                    <div class="infill_den_prog_txt1">
+                                        <h6>Density: <span id="output">25%</span> </h6>
+                                        <p>Standard</p>
+                                    </div>
+                                    <div class="slider-wrapper">
+                                        <input type="range" min="0" max="100" step="1" value="25" class="range-slider" id="slider">
+                                        <div class="range-marks">
+                                            <span>10%</span>
+                                            <span>25%</span>
+                                            <span>50%</span>
+                                            <span>100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                             <div class="color_selection_cards_main">
+                                <div class="step_title">
+                                    <h4>Color Selection</h4>
+                                </div>
+                                <div class="color_sel_inner" id="colorOptions">
+                                    <div class="color-box colorwhite active" data-color="white"></div>
+                                    <div class="color-box colorgray" data-color="gray"></div>
+                                    <div class="color-box colorpink" data-color="pink"></div>
+                                    <div class="color-box colorblue" data-color="blue"></div>
+                                    <div class="color-box colorgreen" data-color="green"></div>
+                                    <div class="color-box coloryellow" data-color="yellow"></div>
+                                    <div class="color-box colororange" data-color="orange"></div>
+                                    <div class="color-box colorpurple" data-color="purple"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-step">
-                    <h2>Step 3: Review & Order</h2>
-                    <p>Confirm details and place your order.</p>
+                    <div class="form_step_content_main">
+                        <div class="form_step_cont_title">
+                            <h2><span>Step 3:</span> Quote & Order</h2>
+                            <p>Review your configuration and pricing details before placing your order</p>
+                        </div>
+                        <div class="form_step_cont_cards_main">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="step3_order_summary_card">
+                                        <h2 class="step3_cards_title">Order Summary</h2>
+                                        <div class="ord_sum_pro">
+                                            <img src="{% static 'assets/imgs/ors.svg' %}" alt="">
+                                            <div>
+                                                <h5>sample-model.stl</h5>
+                                                <p>2.5 MB</p>
+                                            </div>
+                                        </div>
+                                        <div class="step3_os_text_main">
+                                            <div class="step3_os_text_inner">
+                                                <p>Technology:</p>
+                                                <h6>FFF</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Material:</p>
+                                                <h6>PLA</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Quality:</p>
+                                                <h6>Standard</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Infill:</p>
+                                                <h6>50%</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Color:</p>
+                                                <h6>Natural</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Quantity:</p>
+                                                <h6>2 pieces</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Post-Processing:</p>
+                                                <h6>2 services</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="step3_order_summary_card">
+                                        <h2 class="step3_cards_title">Price Breakdown</h2>
+                                        <div class="step3_os_text_main">
+                                            <div class="step3_os_text_inner">
+                                                <p>Material Cost</p>
+                                                <h6>$50.00</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Printing Cost</p>
+                                                <h6>$50.00</h6>
+                                            </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Quality:</p>
+                                                <h6>$60.00</h6>
+                                            </div>
+                                            <div class="step3_os_last_text_inner">
+                                                <h6>Subtotal</h6>
+                                                <p>$160.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="step3_order_summary_card">
+                                        <h2 class="step3_cards_title">Delivery Information</h2>
+                                        <div class="step3_DI_text_main">
+                                            <div class="step3_DI_text_inner DI_txt_Dot">
+                                                <h6>Express Delivery</h6>
+                                                <p>5-7 business days (Free)</p>
+                                            </div>
+                                        </div>
+                                        <div class="step3_DI_text_main">
+                                            <div class="step3_DI_text_inner">
+                                                <h6>Standard Delivery</h6>
+                                                <p>2-3 business days (+$25)</p>
+                                            </div>
+                                        </div>
+                                        <div class="step3_DI_text_main">
+                                            <div class="step3_DI_text_inner">
+                                                <h6>Overnight Delivery</h6>
+                                                <p>Next business day (+$50)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="step3_order_summary_card pb-5">
+                                        <h2 class="step3_cards_title">Estimated Timeline</h2>
+                                        <div class="step3_ET_text_main">
+                                            <div class="step3_ET_text_inner">
+                                                <h6>File Processing</h6>
+                                                <p>1-2 hours</p>
+                                            </div>
+                                        </div>
+                                        <div class="step3_ET_text_main">
+                                            <div class="step3_ET_text_inner">
+                                                <h6>3D Printing</h6>
+                                                <p>2-3 days</p>
+                                            </div>
+                                        </div>
+                                        <div class="step3_ET_text_main">
+                                            <div class="step3_ET_text_inner">
+                                                <h6>Post-Processing</h6>
+                                                <p>1-2 days</p>
+                                            </div>
+                                        </div>
+                                        <div class="step3_ET_text_main">
+                                            <div class="step3_ET_text_inner">
+                                                <h6>Quality Check & Shipping</h6>
+                                                <p>1 day</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="navigation-buttons">
-                    <span><button id="prevBtn" disabled>Prev</button></span>
-                    <span><img src="{% static 'assets/imgs/Logout.svg' %}" alt=""><button id="nextBtn">Next </button></span>
-                </div>
+                    <button id="prevBtn" disabled>Back</button>
+                    <button id="nextBtn">Next</button>
+                    <div id="form_last_btns" style="display: none;">
+                        <button id="submitBtn" class="step_active_btn">Add to Cart - $160.00</button>
+                        <button type="button">Save Quote</button>
+                    </div>
+                </div> 
             </div>
             <div class="file_format_main">
                 <h3>Supported File Formats</h3>
@@ -140,51 +388,64 @@
 {% block js %}
 
 <script>
-    const steps = document.querySelectorAll(".step");
-    const formSteps = document.querySelectorAll(".form-step");
-    const nextBtn = document.getElementById("nextBtn");
-    const prevBtn = document.getElementById("prevBtn");
+  const steps = document.querySelectorAll(".step");
+  const formSteps = document.querySelectorAll(".form-step");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const lastBtns = document.getElementById("form_last_btns");
 
-    let currentStep = 0;
+  let currentStep = 0;
 
-    function updateForm() {
-      formSteps.forEach((form, i) => {
-        form.classList.remove("active");
-        setTimeout(() => {
-          if (i === currentStep) form.classList.add("active");
-        }, 10); // Allow transition animation
-      });
+  function updateForm() {
+    formSteps.forEach((form, i) => {
+      form.classList.remove("active");
+      setTimeout(() => {
+        if (i === currentStep) form.classList.add("active");
+      }, 10);
+    });
 
-      steps.forEach((step, i) => {
-        step.classList.remove("active", "completed");
-        if (i < currentStep) {
-          step.classList.add("completed");
-        } else if (i === currentStep) {
-          step.classList.add("active");
-        }
-      });
+    steps.forEach((step, i) => {
+      step.classList.remove("active", "completed");
+      if (i < currentStep) {
+        step.classList.add("completed");
+      } else if (i === currentStep) {
+        step.classList.add("active");
+      }
+    });
 
-      prevBtn.disabled = currentStep === 0;
-      nextBtn.textContent = currentStep === steps.length - 1 ? "Submit" : "Next ";
+    prevBtn.disabled = currentStep === 0;
+
+    // Show/Hide Next & Submit buttons 
+    if (currentStep === steps.length - 1) {
+      nextBtn.style.display = "none";
+      lastBtns.style.display = "flex";
+    } else {
+      nextBtn.style.display = "flex";
+      lastBtns.style.display = "none";
     }
+  }
 
-    nextBtn.addEventListener("click", () => {
-      if (currentStep < formSteps.length - 1) {
-        currentStep++;
-        updateForm();
-      } else {
-        alert("✅ Form Submitted!");
-      }
-    });
+  nextBtn.addEventListener("click", () => {
+    if (currentStep < formSteps.length - 1) {
+      currentStep++;
+      updateForm();
+    }
+  });
 
-    prevBtn.addEventListener("click", () => {
-      if (currentStep > 0) {
-        currentStep--;
-        updateForm();
-      }
-    });
+  prevBtn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      updateForm();
+    }
+  });
 
-    updateForm();
+  submitBtn.addEventListener("click", () => {
+    alert("✅ Form Submitted!");
+    // You can also submit the actual form here
+  });
+
+  updateForm();
 </script>
 
 <script>
@@ -211,5 +472,76 @@
     alert(`You selected ${this.files.length} file(s)`);
   });
 </script>
+
+<script>
+  const cards = document.querySelectorAll('.material_sel_card_body_div');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Remove active class from all cards
+      cards.forEach(c => c.classList.remove('ms_card_active'));
+
+      // Add active class to the clicked card
+      card.classList.add('ms_card_active');
+    });
+  });
+</script>
+
+<script>
+  const pqcards = document.querySelectorAll('.print_quality_card_body');
+
+  pqcards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Remove active class from all cards
+      pqcards.forEach(c => c.classList.remove('pq_card_active'));
+
+      // Add active class to the clicked card
+      card.classList.add('pq_card_active');
+    });
+  });
+</script>
+
+<script>
+    const slider = document.getElementById("slider");
+    const output = document.getElementById("output");
+
+    function updateSlider(value) {
+      const min = slider.min;
+      const max = slider.max;
+      const percent = ((value - min) / (max - min)) * 100;
+
+      // Update background fill
+      slider.style.background = `linear-gradient(to right, #D7531B 0%, #D7531B ${percent}%, #e5e5e5 ${percent}%, #e5e5e5 100%)`;
+
+      // Update percentage output
+      output.textContent = `${Math.round(value)}%`;
+    }
+
+    // Initialize
+    updateSlider(slider.value);
+
+    // Update on input
+    slider.addEventListener("input", function () {
+      updateSlider(this.value);
+    });
+</script>
+
+<script>
+    const colorBoxes = document.querySelectorAll('.color-box');
+
+    colorBoxes.forEach(box => {
+      box.addEventListener('click', () => {
+        // Remove active from all
+        colorBoxes.forEach(b => b.classList.remove('active'));
+        // Add to clicked
+        box.classList.add('active');
+
+        // Optional: Get the selected color value
+        const selectedColor = box.getAttribute('data-color');
+        console.log('Selected color:', selectedColor);
+      });
+    });
+</script>
+
 
 {% endblock js %}
