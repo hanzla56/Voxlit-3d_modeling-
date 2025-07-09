@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get 3D Quote</title>
+</head>
+<body>
+  <h2>Upload 3D Model & Get Quote</h2>
+
+  <form id="quote-form" enctype="multipart/form-data">
+    <label for="file_upload">3D File (.stl, .obj, .3mf):</label><br>
+    <input type="file" id="file_upload" name="file_upload" required><br><br>
+
+    <label for="unit">Unit:</label>
+    <select id="unit" name="unit">
+      <option value="mm">MM</option>
+      <option value="cm">CM</option>
+      <option value="m">M</option>
+    </select><br><br>
+
+    <label for="material">Material:</label>
+    <select id="material" name="material">
+      <option value="PLA">PLA</option>
+      <option value="PETG">PETG</option>
+      <option value="CF">CF</option>
+    </select><br><br>
+
+    <label for="num_pieces">Number of Pieces:</label>
+    <input type="number" id="num_pieces" name="num_pieces" value="1" min="1" required><br><br>
+
+    <button type="submit">Get Quote</button>
+  </form>
+
+  <h3 id="quote-result"></h3>
+
+  <script>
+    document.getElementById('quote-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const form = new FormData();
+      const fileInput = document.getElementById('file_upload');
+
+      if (!fileInput.files.length) {
+        alert("Please select a file.");
+        return;
+      }
+
+      const json_payload = {
+        unit: document.getElementById('unit').value,
+        material: document.getElementById('material').value,
+        num_pieces: parseInt(document.getElementById('num_pieces').value)
+      };
+
+      form.append('file_upload', fileInput.files[0]);
+      form.append('json_payload', JSON.stringify(json_payload));
+
+      const response = await fetch('/test/', {
+        method: 'POST',
+        body: form
+      });
+
+      const data = await response.json();
+      console.log(data)
+
+      const result = document.getElementById('quote-result');
+      console.log(result)
+      if (data.price) {
+        console.log(`the price is ${data.price}`)
+        result.innerText = "Estimated Price: $" + data.price.toFixed(2);
+      } else {
+        result.innerText = "Error: " + (data.error || 'Unknown error');
+      }
+    });
+  </script>
+</body>
+</html>

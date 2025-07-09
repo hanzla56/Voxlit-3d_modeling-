@@ -1,0 +1,30 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+<button id="checkout-button">Pay $10</button>
+
+<script>
+    var stripe = Stripe("pk_test_51RcWb4CjxDp333zs9b6hI206kS4mjFEaYK6qDwwmyNbk1uMF4TlcOEsHqJM4DQ5AGCPlmhjZ7brnoMaxNYD8w8Id00csxDqWKX");
+
+    document.getElementById("checkout-button").addEventListener("click", function () {
+        fetch("/create-checkout-session/", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error:", error);
+            });
+    });
+</script>
