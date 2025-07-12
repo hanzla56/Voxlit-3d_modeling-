@@ -18,7 +18,9 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def index(request):
       return render(request,'Quote/index.html')
-  
+
+def shoppingcart(request):
+      return render(request,'Quote/shoppingcart.html')
   
 def payment(request):
       return render(request,'Quote/payment.html')
