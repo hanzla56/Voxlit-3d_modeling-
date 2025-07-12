@@ -25,7 +25,7 @@ import os
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('allauth/', include('allauth.urls')), # This line is crucial
+    # path('allauth/', include('allauth.urls')), # This line is crucial
     path("account",include('accounts.urls')),
     path("",include('Quote.urls')),
     # path('', include('two_factor.urls', 'two_factor')),

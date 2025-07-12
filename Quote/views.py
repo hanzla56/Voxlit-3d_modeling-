@@ -99,6 +99,8 @@ class GetQuoteView(View):
             # Get uploaded file
             print(f'entering into view {request.POST}')
             file = request.FILES.get('file_upload')
+            print(f'the file is {file}')
+            # file = 'test.stl'
             if not file:
                 return JsonResponse({'error': 'No file uploaded'}, status=400)
 
@@ -109,6 +111,7 @@ class GetQuoteView(View):
 
             # Load other parameters
             json_payload = json.loads(request.POST.get('json_payload'))
+            print(f'print the json {json_payload}')
 
             # Prepare request to pricing API
             m = MultipartEncoder(
@@ -139,6 +142,7 @@ class GetQuoteView(View):
             return JsonResponse({'price': price})
 
         except Exception as e:
+            print(f'the error is {e}')
             return JsonResponse({'error': str(e)}, status=500)
       
     def get(self,request):

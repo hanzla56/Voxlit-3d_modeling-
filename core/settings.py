@@ -62,17 +62,17 @@ INSTALLED_APPS = [
     "tinymce",
     
     #Social login
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
-    'allauth.socialaccount.providers.facebook',
+    # "allauth",
+    # "allauth.account",
+    # "allauth.socialaccount",
+    # "allauth.socialaccount.providers.google",
+    # 'allauth.socialaccount.providers.facebook',
     
-    #2fa setup
-    'django_otp',
-    'django_otp.plugins.otp_totp',   # For TOTP (Google Authenticator)
-    'two_factor',
-    'qrcode',  # Needed to generate QR codes
+    # #2fa setup
+    # 'django_otp',
+    # 'django_otp.plugins.otp_totp',   # For TOTP (Google Authenticator)
+    # 'two_factor',
+    # 'qrcode',  # Needed to generate QR codes
     
 ]
 
@@ -86,7 +86,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
        # Add the account middleware:
-    "allauth.account.middleware.AccountMiddleware",
+    # "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"

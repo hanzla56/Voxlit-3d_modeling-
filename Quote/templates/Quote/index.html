@@ -55,7 +55,7 @@
                                 <p>or click to browse your computer</p>
                                 <label class="browse-btn">
                                     Browse File <img src="{% static 'assets/imgs/clipboardtext.svg' %}" alt="">
-                                    <input type="file" id="fileInput" hidden>
+                                    <input type="file" id="file_upload" hidden>
                                 </label>
                             </div>
                         </div>
@@ -73,22 +73,29 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form_cont_step_inputs">
                                         <h5>3D Printing Technology</h5>
-                                        <select name="" id="" class="form-select">
+                                        {% comment %} <select name="" id="" class="form-select">
                                             <option value="option1" selected>FFF (Fused Filament Fabrication)</option>
                                             <option value="option2">FFF (Fused Filament Fabrication) 2</option>
                                             <option value="option3">FFF (Fused Filament Fabrication) 3</option>
-                                        </select>
+                                        </select> {% endcomment %}
+                                        <select id="unit" name="unit" class="form-select" required>
+                                            <option value="mm">Millimeters (mm)</option>
+                                            <option value="cm">Centimeters (cm)</option>
+                                            <option value="m">Meters (m)</option>
+                                          </select>
                                         <p>Most common and cost-effective for prototypes</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form_cont_step_inputs">
                                         <h5>3D Printing Technology</h5>
+                                        <input type="number" id="num_pieces" class="form-select" name="num_pieces" min="1" max="65535" value="1" required />
+                                            {% comment %} 
                                         <select name="" id="" class="form-select">
                                             <option value="option1" selected>Standard (0.2mm)</option>
                                             <option value="option2">Standard (0.3mm) </option>
                                             <option value="option3">Standard (0.4mm) </option>
-                                        </select>
+                                        </select> {% endcomment %}
                                     </div>
                                 </div>
                              </div>
@@ -98,7 +105,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="material_sel_card_body_div">
+                                        <div class="material_sel_card_body_div ms_card_active" data-material="PLA">
                                             <div class="material_sel_card_txt1">
                                                 <div class="material_sel_card_txt1_inner">
                                                     <img src="{% static 'assets/imgs/ms1.svg' %}" alt=".">
@@ -113,7 +120,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="material_sel_card_body_div">
+                                        <div class="material_sel_card_body_div" data-material="CF">
                                             <div class="material_sel_card_txt1">
                                                 <div class="material_sel_card_txt1_inner">
                                                     <img src="{% static 'assets/imgs/ms2.svg' %}" alt=".">
@@ -128,7 +135,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="material_sel_card_body_div">
+                                        <div class="material_sel_card_body_div" data-material="PETG">
                                             <div class="material_sel_card_txt1">
                                                 <div class="material_sel_card_txt1_inner">
                                                     <img src="{% static 'assets/imgs/ms3.svg' %}" alt=".">
@@ -149,7 +156,7 @@
                                     <h4>Print Quality</h4>
                                 </div>
                                 <div class="print_quality_cards_inner">
-                                    <div class="print_quality_card_body">
+                                    <div class="print_quality_card_body pq_card_active">
                                         <h6>Draft</h6>
                                         <p>0.3mm layers</p>
                                         <span>Fastest</span>
@@ -219,18 +226,13 @@
                                         <div class="ord_sum_pro">
                                             <img src="{% static 'assets/imgs/ors.svg' %}" alt="">
                                             <div>
-                                                <h5>sample-model.stl</h5>
-                                                <p>2.5 MB</p>
+                                                <h5 id="image_name">sample-model.stl</h5>
+                                                <p id="image_size">2.5 MB</p>
                                             </div>
                                         </div>
-                                        <div class="step3_os_text_main">
-                                            <div class="step3_os_text_inner">
-                                                <p>Technology:</p>
-                                                <h6>FFF</h6>
-                                            </div>
                                             <div class="step3_os_text_inner">
                                                 <p>Material:</p>
-                                                <h6>PLA</h6>
+                                                <h6 id="quote_material">PLA</h6>
                                             </div>
                                             <div class="step3_os_text_inner">
                                                 <p>Quality:</p>
@@ -246,11 +248,7 @@
                                             </div>
                                             <div class="step3_os_text_inner">
                                                 <p>Quantity:</p>
-                                                <h6>2 pieces</h6>
-                                            </div>
-                                            <div class="step3_os_text_inner">
-                                                <p>Post-Processing:</p>
-                                                <h6>2 services</h6>
+                                                <h6><span id="quote_pieces">2</span> pieces</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -265,13 +263,9 @@
                                                 <p>Printing Cost</p>
                                                 <h6>$50.00</h6>
                                             </div>
-                                            <div class="step3_os_text_inner">
-                                                <p>Quality:</p>
-                                                <h6>$60.00</h6>
-                                            </div>
                                             <div class="step3_os_last_text_inner">
                                                 <h6>Subtotal</h6>
-                                                <p>$160.00</p>
+                                                <p id="quote_price">$160.00</p>
                                             </div>
                                         </div>
                                     </div>
@@ -396,7 +390,94 @@
   const lastBtns = document.getElementById("form_last_btns");
 
   let currentStep = 0;
+  let quoteData = null;
 
+function formatFileSize(bytes) {
+  if (bytes >= 1024 * 1024) {
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+  } else {
+    return (bytes / 1024).toFixed(2) + " KB";
+  }
+}
+
+function updateStep3Content(data) {
+  document.getElementById('quote_price').textContent = `$${data.price}`;
+  document.getElementById('quote_material').textContent = data.material;
+  document.getElementById('quote_pieces').textContent = data.num_pieces;
+  document.getElementById('image_name').textContent = data.file_name;
+
+  const readableSize = formatFileSize(data.file_size);
+  document.getElementById('image_size').textContent = readableSize;
+}
+
+
+
+  async function submitQuoteRequest() {
+    try {
+      // 1. Get required fields
+      const unit = document.getElementById('unit')?.value;
+      const numPieces = document.getElementById('num_pieces')?.value;
+      const fileInput = document.getElementById('file_upload');
+      const file = fileInput?.files?.[0];
+  
+      // 2. Get selected material from data-material
+      const activeMaterialCard = document.querySelector('.ms_card_active');
+      const selectedMaterial = activeMaterialCard?.dataset?.material;
+  
+      // 3. Validate inputs
+    //   if (!unit || !numPieces || !selectedMaterial || !file) {
+    //     alert("❗ Please fill in all required fields and select a file.");
+    //     return;
+    //   }
+  
+      // 4. Prepare payload
+      const json_payload = {
+        unit: unit,
+        material: selectedMaterial.toUpperCase(),
+        num_pieces: parseInt(numPieces)
+      };
+  
+      const formData = new FormData();
+      formData.append("json_payload", JSON.stringify(json_payload));
+      formData.append("file_upload", file);
+      console.log(formData)
+  
+      // 5. Send request to Django view
+      const response = await fetch("/test/", {
+        method: "POST",
+        body: formData
+      });
+  
+      const result = await response.json();
+      console.log(result)
+      
+  
+      // 6. Handle response
+      if (response.ok) {
+        alert(`✅ Estimated Price: $${result.price}`);
+        quoteData = {
+            ...result,                     // keeps API data (like price)
+            unit: unit,                   // from user input
+            material: selectedMaterial,   // from card selection
+            num_pieces: parseInt(numPieces), // from user input
+            file_name: file?.name,        // name of uploaded file
+            file_size:file?.size
+        };
+        // quoteData = result; // Save for later use
+        console.log(`the quote data is ${quoteData}`)
+        updateStep3Content(quoteData); // Render in Step 3
+        return true;
+        // Optionally: render price in UI instead of alert
+      } else {
+        console.error("❌ Quote API error:", result);
+        alert("❌ Failed to get quote: " + (result.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error("❌ Request failed:", err);
+      alert("❌ Something went wrong. Please try again.");
+    }
+  }
+  
   function updateForm() {
     formSteps.forEach((form, i) => {
       form.classList.remove("active");
@@ -428,6 +509,10 @@
 
   nextBtn.addEventListener("click", () => {
     if (currentStep < formSteps.length - 1) {
+       console.log(currentStep)
+      if (currentStep == 1){
+        submitQuoteRequest(); 
+      }
       currentStep++;
       updateForm();
     }
@@ -468,7 +553,7 @@
     alert(`You dropped ${files.length} file(s)`);
   });
 
-  document.getElementById("fileInput").addEventListener("change", function () {
+  document.getElementById("file_upload").addEventListener("change", function () {
     alert(`You selected ${this.files.length} file(s)`);
   });
 </script>
