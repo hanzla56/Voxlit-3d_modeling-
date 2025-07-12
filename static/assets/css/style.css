@@ -1403,14 +1403,12 @@ textarea {
     display: block;
   }
   .quote_multistep_form_main .steps::after {
-    content: '';
+    content: "";
   }
-
 
   .quote_multistep_form_main .steps .step {
     padding: 15px 0px;
     max-width: 100% !important;
-
   }
 }
 
@@ -1442,6 +1440,22 @@ textarea {
     margin: auto;
     text-align: center;
     width: max-content;
+    margin-top: 20px;
+  }
+  .navigation-buttons {
+    display: block;
+  }
+  #form_last_btns {
+    margin-top: 20px;
+  }
+  #form_last_btns button {
+    width: max-content;
+    max-width: 100%;
+    min-width: 100%;
+    margin: auto;
+  }
+  .navigation-buttons button#nextBtn {
+    margin: auto;
     margin-top: 20px;
   }
 }
