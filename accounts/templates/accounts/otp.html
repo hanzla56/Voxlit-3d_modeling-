@@ -1,114 +1,59 @@
-{% extends "base.html" %}
 {% load static %}
-{% block css %}<link rel="stylesheet" href="{% static 'assets/css/accounts.css' %}">{% endblock css %}
-{% block content %}
+<!doctype html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voxelit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'assets/css/accounts.css' %}">
+</head>
 
-    <section class="accounts_section">
-        <div class="container">
-            <div class="accounts_main">
-                <div class="accounts_left_main">
-                    <div class="accounts_left_img"></div>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="brand-title">Voxelit</h2>
+            <form>
+                <div class="otp-group">
+                    <input type="text" name="otp1" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp2" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp3" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp4" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp5" maxlength="1" class="otp-input" required>
+                    <input type="text" name="otp6" maxlength="1" class="otp-input" required>
                 </div>
-                <div class="accounts_right_main">
-                    <div class="accounts_right_card_body_div">
-                        <div class="accounts_right_card_logo_div">
-                            <img src="{% static 'assets/img/login_logo.svg' %}" alt="">
-                            <h2>Please Enter the OTP</h2>
-                        </div>
-                        {% if messages %}
-                        <div class="messages haveText">
-                            {% for message in messages %}
-                                <div class="alert alert-{{ message.tags }}">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                        <form action="{% url 'accounts:verify-otp' %}" method="post">
-                        {% csrf_token %}
-                        <div class="accounts_right_card_inputs_main otpInputGroup d-flex">
-                            <div class="accounts_right_card_input_inner">
-                                <input class="otpInput" type="text" maxlength="1" required>
-                            </div>
-                            <div class="accounts_right_card_input_inner">
-                              <input class="otpInput" type="text" maxlength="1" required>
-                          </div>
-                          <div class="accounts_right_card_input_inner">
-                              <input class="otpInput" type="text" maxlength="1" required>
-                          </div>
-                          <div class="accounts_right_card_input_inner">
-                              <input class="otpInput" type="text" maxlength="1" required>
-                          </div>
-                          <input type="hidden" id="otp" name="otp" >
-            
-                        </div>
-                        <div class="accounts_btn">
-                            <button type="submit" onclick="combineOTP()">Verify</button>
-                        </div>
-                    </form>
-                        <p class="last_text">Don’t have an account?<a href="{% url "accounts:signup" %}"> Sign Up</a></p>
-                    </div>
-                </div>
-            </div>
+                <a href="{% url 'accounts:reset-password' %}">
+                    <button class="main-btn" type="button">Verify</button>
+                </a>
+                <a href="{% url 'accounts:login' %}">
+                    <button class="main-btn backBtn" type="button">Back to login</button>
+                </a>
+            </form>
         </div>
-    </section>
+    </div>
 
-
-{% endblock content %}
-
-{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const passwordInput = document.getElementById('form_name2');
-        const passwordIcon = document.getElementById('passwordIcon');
+        // Auto-tab input fields
+        const inputs = document.querySelectorAll('.otp-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
 
-        passwordIcon.addEventListener('click', function() {
-            // Toggle password visibility
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                passwordIcon.classList.remove('bi-eye');
-                passwordIcon.classList.add('bi-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                passwordIcon.classList.remove('bi-eye-slash');
-                passwordIcon.classList.add('bi-eye');
-            }
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && input.value === '' && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
         });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const otpInputs = document.querySelectorAll('.otpInput');
-
-      otpInputs.forEach((input, index) => {
-          input.addEventListener('input', function () {
-              // Only allow digits
-              this.value = this.value.replace(/[^0-9]/g, '');
-
-              // If a digit is entered, move to the next input
-              if (this.value.length === 1 && index < otpInputs.length - 1) {
-                  otpInputs[index + 1].focus();
-              }
-          });
-
-          input.addEventListener('keydown', function (event) {
-              // Allow backspace to move to the previous input
-              if (event.key === 'Backspace' && this.value.length === 0 && index > 0) {
-                  otpInputs[index - 1].focus();
-              }
-          });
-      });
-  });
-
-  function combineOTP() {
-  let otp = '';
-  console.log('otp funtion')
-  const inputs = document.querySelectorAll('.otpInput');
-  inputs.forEach(input => {
-      otp += input.value;
-  });
-  document.getElementById('otp').value = otp;
-}
     </script>
+</body>
 
-{% endblock script %}
+</html>
