@@ -19,10 +19,10 @@
         <div class="container">
             <div class="quote_multistep_form_main">
                 <div class="steps">
-                    <div class="step active">
-                        <div class="step_circle">1</div>
+                      <div class="step">
+                        <div class="step_circle">2</div>
                         <div class="step_text">
-                            <h6>Upload File</h6>
+                           <h6>Upload File</h6>
                             <p>STL, OBJ, 3MF</p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                 <img src="{% static 'assets/imgs/export.svg' %}" alt="Upload Icon" class="upload-icon">
                                 <h4>Drag and drop your file here</h4>
                                 <p>or click to browse your computer</p>
-                                <label class="browse-btn">
+                                <label class="browse-btn mt-3">
                                     Browse File <img src="{% static 'assets/imgs/clipboardtext.svg' %}" alt="">
                                     <input type="file" id="file_upload" hidden>
                                 </label>
@@ -220,16 +220,22 @@
                         </div>
                         <div class="form_step_cont_cards_main">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="step3_order_summary_card">
-                                        <h2 class="step3_cards_title">Order Summary</h2>
-                                        <div class="ord_sum_pro">
-                                            <img src="{% static 'assets/imgs/ors.svg' %}" alt="">
-                                            <div>
-                                                <h5 id="image_name">sample-model.stl</h5>
-                                                <p id="image_size">2.5 MB</p>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="step3_order_summary_card">
+                                                <h2 class="step3_cards_title">Order Summary</h2>
+                                                <div class="ord_sum_pro">
+                                                    <img src="{% static 'assets/imgs/ors.svg' %}" alt="">
+                                                    <div>
+                                                        <h5 id="image_name">sample-model.stl</h5>
+                                                        <p id="image_size">2.5 MB</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Technology:</p>
+                                                <h6 id="quote_material">FFF</h6>
+                                            </div>
                                             <div class="step3_os_text_inner">
                                                 <p>Material:</p>
                                                 <h6 id="quote_material">PLA</h6>
@@ -250,76 +256,90 @@
                                                 <p>Quantity:</p>
                                                 <h6><span id="quote_pieces">2</span> pieces</h6>
                                             </div>
+                                            <div class="step3_os_text_inner">
+                                                <p>Post-Processing:</p>
+                                                <h6><span id="quote_pieces">2</span> pieces</h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="step3_order_summary_card">
-                                        <h2 class="step3_cards_title">Price Breakdown</h2>
-                                        <div class="step3_os_text_main">
-                                            <div class="step3_os_text_inner">
-                                                <p>Material Cost</p>
-                                                <h6>$50.00</h6>
-                                            </div>
-                                            <div class="step3_os_text_inner">
-                                                <p>Printing Cost</p>
-                                                <h6>$50.00</h6>
-                                            </div>
-                                            <div class="step3_os_last_text_inner">
-                                                <h6>Subtotal</h6>
-                                                <p id="quote_price">$160.00</p>
+                                        <div class="col-12">
+                                            <div class="step3_order_summary_card">
+                                                <h2 class="step3_cards_title">Price Breakdown</h2>
+                                                <div class="step3_os_text_main">
+                                                    <div class="step3_os_text_inner">
+                                                        <p>Material Cost</p>
+                                                        <h6>$50.00</h6>
+                                                    </div>
+                                                    <div class="step3_os_text_inner">
+                                                        <p>Printing Cost</p>
+                                                        <h6>$50.00</h6>
+                                                    </div>
+                                                    <div class="step3_os_last_text_inner">
+                                                        <h6>Subtotal</h6>
+                                                        <p id="quote_price">$160.00</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="step3_order_summary_card">
-                                        <h2 class="step3_cards_title">Delivery Information</h2>
-                                        <div class="step3_DI_text_main">
-                                            <div class="step3_DI_text_inner DI_txt_Dot">
-                                                <h6>Express Delivery</h6>
-                                                <p>5-7 business days (Free)</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                        <div class="step3_order_summary_card">
+                                            <h2 class="step3_cards_title">Delivery Information</h2>
+                                            <div class="step3_DI_text_main">
+                                                <div class="step3_DI_text_inner DI_txt_Dot">
+                                                    <h6>Express Delivery</h6>
+                                                    <p>5-7 business days (Free)</p>
+                                                </div>
+                                            </div>
+                                            <div class="step3_DI_text_main">
+                                                <div class="step3_DI_text_inner">
+                                                    <h6>Standard Delivery</h6>
+                                                    <p>2-3 business days (+$25)</p>
+                                                </div>
+                                            </div>
+                                            <div class="step3_DI_text_main">
+                                                <div class="step3_DI_text_inner">
+                                                    <h6>Overnight Delivery</h6>
+                                                    <p>Next business day (+$50)</p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="step3_DI_text_main">
-                                            <div class="step3_DI_text_inner">
-                                                <h6>Standard Delivery</h6>
-                                                <p>2-3 business days (+$25)</p>
+                                        <div class="col-lg-12">
+                                            <div class="step3_order_summary_card pb-5">
+                                            <h2 class="step3_cards_title">Estimated Timeline</h2>
+                                            <div class="step3_ET_text_main">
+                                                <div class="step3_ET_text_inner">
+                                                    <h6>File Processing</h6>
+                                                    <p>1-2 hours</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="step3_DI_text_main">
-                                            <div class="step3_DI_text_inner">
-                                                <h6>Overnight Delivery</h6>
-                                                <p>Next business day (+$50)</p>
+                                            <div class="step3_ET_text_main">
+                                                <div class="step3_ET_text_inner">
+                                                    <h6>3D Printing</h6>
+                                                    <p>2-3 days</p>
+                                                </div>
+                                            </div>
+                                            <div class="step3_ET_text_main">
+                                                <div class="step3_ET_text_inner">
+                                                    <h6>Post-Processing</h6>
+                                                    <p>1-2 days</p>
+                                                </div>
+                                            </div>
+                                            <div class="step3_ET_text_main">
+                                                <div class="step3_ET_text_inner">
+                                                    <h6>Quality Check & Shipping</h6>
+                                                    <p>1 day</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="step3_order_summary_card pb-5">
-                                        <h2 class="step3_cards_title">Estimated Timeline</h2>
-                                        <div class="step3_ET_text_main">
-                                            <div class="step3_ET_text_inner">
-                                                <h6>File Processing</h6>
-                                                <p>1-2 hours</p>
-                                            </div>
-                                        </div>
-                                        <div class="step3_ET_text_main">
-                                            <div class="step3_ET_text_inner">
-                                                <h6>3D Printing</h6>
-                                                <p>2-3 days</p>
-                                            </div>
-                                        </div>
-                                        <div class="step3_ET_text_main">
-                                            <div class="step3_ET_text_inner">
-                                                <h6>Post-Processing</h6>
-                                                <p>1-2 days</p>
-                                            </div>
-                                        </div>
-                                        <div class="step3_ET_text_main">
-                                            <div class="step3_ET_text_inner">
-                                                <h6>Quality Check & Shipping</h6>
-                                                <p>1 day</p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -334,7 +354,10 @@
                     </div>
                 </div> 
             </div>
-            <div class="file_format_main">
+          
+        </div>
+        <div class="container">
+              <div class="file_format_main">
                 <h3>Supported File Formats</h3>
                 <div class="file_format_inner">
                     <div class="fileformat">
@@ -477,8 +500,8 @@ function updateStep3Content(data) {
       alert("❌ Something went wrong. Please try again.");
     }
   }
-  
   function updateForm() {
+
     formSteps.forEach((form, i) => {
       form.classList.remove("active");
       setTimeout(() => {
