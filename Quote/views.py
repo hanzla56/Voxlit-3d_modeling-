@@ -27,6 +27,11 @@ def service(request):
   
 def payment(request):
       return render(request,'Quote/payment.html')
+  
+def contact(request):
+      return render(request,'Quote/contactus.html')
+
+
 
 class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):

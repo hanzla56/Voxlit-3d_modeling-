@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<section class="hero_section">
+      <div class="container">
+          <div class="hero_text_main">
+              <h5>Contact Us <img src="{% static 'assets/imgs/stars.svg' %}" alt=""></h5>
+              <p>Need help with your order, have a question, or want to talk business? We're here to help.</p>
+          </div>
+      </div>
+  </section>
+
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col-lg-8">
+            <div class="contact-container mb-3 mb-lg-0">
+                <div>
+                    <h1>Send us a Message</h1>
+                    <p>Fill out the form below and we'll respond as soon as possible</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="your.email@example.com">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="select">Subject *</label>
+                        <select id="select" class="form-select mb-3">
+                            <option selected>Choose option...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="textarea">Message *</label> 
+                        <br>
+                        <textarea name="message_textcrea" id="textarea" rows="8"></textarea>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="attachFile">Attach File <small class="text-muted">(Optional)</small></label> 
+                        <div class="attachFile-container" id="attachFile">
+                            <div class="dropzone-content">
+                                <label class="browse-btn mb-3">
+                                    Choose File <img src="{% static 'assets/imgs/clipboardtext.svg' %}" alt="">
+                                    <input type="file" id="choose_file" hidden>
+                                </label>
+                                <p>STL, OBJ, PDF, ZIP, 3MF, JPG, PNG (Max 50MB)</p>
+                            </div>
+                        </div>
+
+                        <div class="btn-container"><button class="submit-button">Send Message</button></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="row mb-2">
+                <div class="col-12 mb-4">
+                    <div class="contact-container">
+                        <div class="mb-2">
+                            <h2>Get in Touch</h2>
+                        </div>
+                        <div class="contact-info">
+                            <div class="info-icon">
+                                <img src="{% static 'assets/imgs/info-icon-1.svg' %}" alt="">
+                            </div>
+                            <div class="info-detail">
+                                <h3>Email Address</h3>
+                                <p>contact@3dprint.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="info-icon">
+                                <img src="{% static 'assets/imgs/info-icon-2.svg' %}" alt="">
+                            </div>
+                            <div class="info-detail">
+                                <h3>Phone Number</h3>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="info-icon">
+                                <img src="{% static 'assets/imgs/info-icon-3.svg' %}" alt="">
+                            </div>
+                            <div class="info-detail">
+                                <h3>Address</h3>
+                                <p>123 Innovation Drive, Tech Valley, CA 94025</p>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="info-icon">
+                                <img src="{% static 'assets/imgs/info-icon-4.svg' %}" alt="">
+                            </div>
+                            <div class="info-detail">
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM PST</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="contact-container">
+                        <div class="mb-2">
+                            <h2>Quick Actions</h2>
+                        </div>
+                       <div class="action-btns">
+                            <button><img class="img-fluid" src="{% static 'assets/imgs/action-icon-1.svg' %}" alt=""> Get Instant Quote</button>
+                       </div>
+                       <div class="action-btns">
+                            <button class="active"><img class="img-fluid" src="{% static 'assets/imgs/action-icon-2.svg' %}" alt=""> Request Design Help</button>
+                       </div>
+                       <div class="action-btns">
+                            <button><img class="img-fluid" src="{% static 'assets/imgs/action-icon-3.svg' %}" alt=""> Get Directions</button>
+                       </div>
+                       <div class="action-btns">
+                            <button><img class="img-fluid" src="{% static 'assets/imgs/action-icon-4.svg' %}" alt=""> Track Your Order</button>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-5">
+        <div class="text-center">
+            <h1>Why Choose Voxelit</h1>
+            <p>We combine advanced 3D printing, trusted expertise, and dedicated support — so you get perfect results every time.</p>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="row gap-3 gap-lg-0">
+            <div class="col-lg-4">
+                <div class="service-cards">
+                    <div class="service-card-img">
+                          <img src="{% static 'assets/imgs/info-icon-3.svg' %}" alt="">
+                    </div>
+                    <div class="service-card-text">
+                         <h4>Precision Manufacturing</h4>
+                         <p>Industry-leading accuracy with tolerances down to ±0.1mm for critical applications</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="service-cards">
+                    <div class="service-card-img">
+                          <img src="{% static 'assets/imgs/info-icon-3.svg' %}" alt="">
+                    </div>
+                    <div class="service-card-text">
+                         <h4>Rapid Turnaround</h4>
+                         <p>From design to delivery in as little as 24 hours for urgent projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="service-cards">
+                    <div class="service-card-img">
+                          <img src="{% static 'assets/imgs/info-icon-3.svg' %}" alt="">
+                    </div>
+                    <div class="service-card-text">
+                         <h4>Quality Guarantee</h4>
+                         <p>100% satisfaction guarantee with rigorous quality control at every step</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="rating">
+                    <p>Trusted by 500+ companies worldwide
+                         <div class="stars">
+                        <span> <img src="{% static 'assets/imgs/star.svg' %}" alt=""></span>
+                        <span> <img src="{% static 'assets/imgs/star.svg' %}" alt=""></span>
+                        <span> <img src="{% static 'assets/imgs/star.svg' %}" alt=""></span>
+                        <span> <img src="{% static 'assets/imgs/star.svg' %}" alt=""></span>
+                        <span> <img src="{% static 'assets/imgs/star.svg' %}" alt=""></span>
+                    </div> 
+                        <span>4.9/5</span> rating
+                    </p>
+               
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}
