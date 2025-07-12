@@ -7,29 +7,99 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.utils.decorators import method_decorator
 
-
+from .models import *
 import requests
 import json
 import mimetypes
 from requests_toolbelt.multipart.encoder import MultipartEncoder
-
+from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+@login_required
 def index(request):
       return render(request,'Quote/index.html')
 
+@login_required
 def shoppingcart(request):
-      return render(request,'Quote/shoppingcart.html')
+      print(request.user)
+      items = QuoteOrder.objects.filter(user=request.user)
+      context = {
+          'items':items      }
+      return render(request,'Quote/shoppingcart.html',context)
   
+
 def service(request):
-      return render(request,'Quote/service.html')
+    if request.method == 'POST':
+        try:
+            print(request.POST)
+
+            first_name = request.POST.get("first_name")
+            last_name = request.POST.get("last_name")
+            project_title = request.POST.get("project_title")
+            email = request.POST.get("email")
+            phone = request.POST.get("phone_number")
+            message = request.POST.get("message_textcrea")
+
+            # Validate required fields
+            if not all([first_name, email, message]):
+                print('❌ Validation failed: missing required fields')
+                return HttpResponse("⚠️ Please fill all required fields.", status=400)
+
+            # Save to DB
+            QuoteRequest.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                project_title=project_title,
+                email=email,
+                phone_number=phone,
+                project_description=message,
+            )
+
+            return HttpResponse(status=200)
+
+        except Exception as e:
+            print(e)
+            return HttpResponse("❌ An unexpected error occurred. Please try again later.", status=500)
+
+    else:
+        return render(request, 'Quote/service.html')
   
 def payment(request):
       return render(request,'Quote/payment.html')
   
+  
+  
 def contact(request):
-      return render(request,'Quote/contactus.html')
+    if request.method == 'POST':
+        print(request.POST)
+        first_name = request.POST.get("full_name")
+        subject = request.POST.get("subject")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone_number")
+        message = request.POST.get("message_textcrea")
+        file_name = request.FILES.get("attachment")
+
+        # Validate required fields
+        if not all([first_name, subject, email, message]):
+            print('something is missing')
+            return HttpResponse("⚠️ Please fill all required fields.", status=400)
+
+        # Save to DB
+        contact = ContactUs.objects.create(
+            first_name=first_name,
+            Subject=subject,
+            email=email,
+            phone_number=phone,
+            Message=message,
+            contact_file=file_name
+        )
+
+        return HttpResponse(status=200)
+
+    else:
+        return render(request,'Quote/contactus.html')
 
 
 
@@ -37,15 +107,19 @@ class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         YOUR_DOMAIN = 'http://localhost:8000'
         try:
+            data = json.loads(request.body)
+            price = float(data.get('price', 0))  # fallback to 0 if not present
+            amount_in_cents = int(price * 100)
+            
             checkout_session = stripe.checkout.Session.create(
                 payment_method_types=['card'],
                 line_items=[
                     {
                         'price_data': {
                             'currency': 'usd',
-                            'unit_amount': 1000,  # $10.00
+                            'unit_amount': amount_in_cents,  # $10.00
                             'product_data': {
-                                'name': 'T-shirt',
+                                'name':  '3D Print Order',
                             },
                         },
                         'quantity': 1,
@@ -55,9 +129,40 @@ class CreateCheckoutSessionView(View):
                 success_url=YOUR_DOMAIN + '/payment/success/',
                 cancel_url=YOUR_DOMAIN + '/payment/cancel/',
             )
+            print(checkout_session.id)
             return JsonResponse({'id': checkout_session.id})
         except Exception as e:
             return JsonResponse({'error': str(e)})
+
+@login_required
+def save_quote(request):
+    if request.method == "POST":
+        print('enter into view')
+        try:
+            # data = json.loads(request.body)
+            data = request.POST
+            files = request.FILES
+            
+            print(f'the data is {data}=======')
+            
+            order = QuoteOrder.objects.create(
+                model_file=files.get('model_file'),  # ✅ store file
+                material=data["material"],
+                unit=data["unit"],
+                num_pieces=data.get("num_pieces"),
+                price=data.get("price"),
+                color=data.get("color"),
+                customer_email=data.get("email"),  # optional
+                status="PENDING"
+            )
+
+            return JsonResponse({"success": True, "order_id": order.id})
+
+        except Exception as e:
+            print(f'the error {e}')
+            return JsonResponse({"success": False, "error": str(e)}, status=400)
+
+    return JsonResponse({"success": False, "error": "Invalid method"}, status=405)
 
 
 @csrf_exempt

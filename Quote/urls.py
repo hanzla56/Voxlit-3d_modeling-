@@ -2,8 +2,12 @@ from django.urls import path
 
 from .views import *
 
+app_name= "Quote"
+
 urlpatterns = [
     path('',index,name='home'),
+    path("save-quote/", save_quote, name="save_quote"),
+
     path('shoppingcart/',shoppingcart,name='shoppingcart'),
     path('service/',service,name='service'),
     path('payment/',payment,name='payment'),

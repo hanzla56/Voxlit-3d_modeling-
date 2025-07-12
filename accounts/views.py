@@ -149,7 +149,7 @@ def send_verification_email(request, user):
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     domain = request.get_host()
     
-    link = f"http://{domain}/accounts/verify/{uid}/{token}/"
+    link = f"http://{domain}/account/verify/{uid}/{token}/"
 
     subject = "Activate Your Account"
     message = f"""
@@ -172,7 +172,6 @@ Thank you!
     
              
 
-@csrf_exempt  # ⚠️ You should avoid this in production, explained below
 def register_view(request):
     if request.method == 'POST':
         print('inside view')
@@ -189,9 +188,13 @@ def register_view(request):
                     )
                     return redirect('accounts:login')
             except Exception as e:
+                print(e)
                 messages.error(request, f"Unexpected error: {e}")
                 return redirect('accounts:signup')
         else:
+            print('in else view')
+            print(form.errors.as_json())
+
             # Collect and display form validation errors
             for field, errors in form.errors.items():
                 for error in errors:
@@ -328,17 +331,18 @@ def login_view(request):
                 messages.success(request, "Login successful.")
                 print("Logged in successfully")
                 # Fetch the user's plan
-                try:
-                    user_plan = UserPlan.objects.get(user=user)
-                    print(user_plan.user)
-                    print(f"User plan: {user_plan.package.name}")
-                    # You can also store it in session if you want to use it later
-                    request.session['user_plan'] = user_plan.package.name
-                    return redirect('dashboard:events')
-                except UserPlan.DoesNotExist:
-                    print("No plan found for this user.")
-                    messages.warning(request, "No active plan found.")
-                    return redirect('websiteDesign:pricing')
+                # try:
+                #     user_plan = UserPlan.objects.get(user=user)
+                #     print(user_plan.user)
+                #     print(f"User plan: {user_plan.package.name}")
+                #     # You can also store it in session if you want to use it later
+                #     request.session['user_plan'] = user_plan.package.name
+                #     return redirect('dashboard:events')
+                # except UserPlan.DoesNotExist:
+                #     print("No plan found for this user.")
+                #     messages.warning(request, "No active plan found.")
+                #     return redirect('websiteDesign:pricing')
+                return redirect('Quote:home')
                 
             else:
                 messages.error(request, "Please verify your email before logging in.")
@@ -366,7 +370,7 @@ def signup(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('websiteDesign:index')
+    return redirect('accounts:login')
 
 
 def forgot_view(request):

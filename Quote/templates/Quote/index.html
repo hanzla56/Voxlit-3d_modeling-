@@ -329,7 +329,7 @@
                     <button id="prevBtn" disabled>Back</button>
                     <button id="nextBtn">Next</button>
                     <div id="form_last_btns" style="display: none;">
-                        <button id="submitBtn" class="step_active_btn">Add to Cart - $160.00</button>
+                        <button id="submitBtn" class="step_active_btn">Add to Cart - <span id="checkout-btn">$160.00</span></button>
                         <button type="button">Save Quote</button>
                     </div>
                 </div> 
@@ -400,11 +400,18 @@ function formatFileSize(bytes) {
   }
 }
 
+const getCSRFToken = () => {
+  return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+};
+
+const csrfToken = getCSRFToken();
+
 function updateStep3Content(data) {
   document.getElementById('quote_price').textContent = `$${data.price}`;
   document.getElementById('quote_material').textContent = data.material;
   document.getElementById('quote_pieces').textContent = data.num_pieces;
   document.getElementById('image_name').textContent = data.file_name;
+  document.getElementById('checkout-btn').textContent = `$${data.price}`;
 
   const readableSize = formatFileSize(data.file_size);
   document.getElementById('image_size').textContent = readableSize;
@@ -461,10 +468,11 @@ function updateStep3Content(data) {
             material: selectedMaterial,   // from card selection
             num_pieces: parseInt(numPieces), // from user input
             file_name: file?.name,        // name of uploaded file
-            file_size:file?.size
+            file_size:file?.size,
+            model_file:file
         };
         // quoteData = result; // Save for later use
-        console.log(`the quote data is ${quoteData}`)
+        console.log("the quote data is", quoteData);
         updateStep3Content(quoteData); // Render in Step 3
         return true;
         // Optionally: render price in UI instead of alert
@@ -525,10 +533,44 @@ function updateStep3Content(data) {
     }
   });
 
-  submitBtn.addEventListener("click", () => {
-    alert("✅ Form Submitted!");
-    // You can also submit the actual form here
-  });
+  submitBtn.addEventListener("click", async () => {
+  try {
+    const formData = new FormData();
+    const fileInput = document.getElementById("file_upload");
+    const file = fileInput.files[0];
+
+
+    // Add everything from quoteData
+    for (const key in quoteData) {
+    formData.append(key, quoteData[key]);
+    }
+
+    // Add the actual file separately
+    formData.append("model_file", file);  // ✅ only file comes from <input>
+    console.log(formData)
+
+    const response = await fetch("/save-quote/", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": csrfToken, // ✅ Required for Django
+      },
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // ✅ Redirect to cart or summary page with order ID (optional)
+      window.location.href = `/shoppingcart/`;
+    } else {
+      alert("⚠️ Failed to save quote.");
+    }
+  } catch (error) {
+    console.error("Save error:", error);
+    alert("🚨 Failed to save quote.");
+  }
+});
+
 
   updateForm();
 </script>
