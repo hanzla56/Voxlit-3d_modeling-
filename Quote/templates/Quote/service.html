@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<section class="hero_section">
+      <div class="container">
+          <div class="hero_text_main">
+              <h5>Instant quote <img src="{% static 'assets/imgs/stars.svg' %}" alt=""></h5>
+              <h2>Get an Instant Quote for Your 3D Print</h2>
+              <p>Upload your model, select materials and options, get instant pricing with detailed breakdown</p>
+          </div>
+      </div>
+  </section>
+
+<div class="container mt-5">
+      <div class="form-container">
+            <div>
+                  <h1>Tell Us About Your Project</h1>
+                  <p>Fill out the form below with as much detail as possible. Don't worry if you don't have all the technical specifications—we'll help you figure it out!</p>
+            </div>
+            <div class="field-container">
+                  <h3>
+                        <img src="{% static 'assets/imgs/user.svg' %}" alt="icon" style="width: 18px; margin-right: 8px;">
+                        personal information</h3>
+                  <div>
+                        <div class="row">
+                              <div class="col-md-6 mb-3">
+                                    <label for="first">First Name</label>
+                                    <input type="text" id="first" placeholder="Enter your first name">
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                    <label for="last">Last Name</label>
+                                    <input type="text" id="last" placeholder="Enter your last name">
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" placeholder="your.email@example.com">
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                    <label for="phone">Phone Number <small class="text-muted">(Optional)</small></label>
+                                    <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+                                    <small class="form-text text-muted">For faster communication</small>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="field-container">
+                  <h3>Project Details</h3>
+                  <div>
+                        <div class="row">
+                              <div class="col-md-12 mb-3">
+                                    <label for="first">Project Title*</label>
+                                    <input type="text" id="first" placeholder="Give your project a name (e.g., 'Custom Phone Case', 'Prototype Housing')">
+                                    <small class="form-text text-muted">Helps us organize your request</small>
+                              </div>
+                              <div class="col-md-12 mb-3">
+                                    <label for="first">Project Description & Requirements *</label>
+                                    <textarea rows="5"> </textarea>
+                                    <small class="form-text text-muted">Helps us organize your request</small>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="d-flex justify-content-center"><button>Request a Quote</button></div>
+      </div>
+</div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

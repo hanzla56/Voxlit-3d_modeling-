@@ -22,6 +22,9 @@ def index(request):
 def shoppingcart(request):
       return render(request,'Quote/shoppingcart.html')
   
+def service(request):
+      return render(request,'Quote/service.html')
+  
 def payment(request):
       return render(request,'Quote/payment.html')
 
