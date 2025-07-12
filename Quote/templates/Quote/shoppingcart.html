@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="shopcart_hero">
+    <div class="container">
+        <div class="shopcart_title"> 
+            <h1>Shopping Cart <img src="{% static 'assets/imgs/stars.svg' %}" alt=""></h1>
+            <p>Review and manage your 3D print jobs before checkout</p>
+            <button type="button"><i class="bi bi-bookmark"></i> Save Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="shoppingcart_section">
+    <div class="container">
+        <div class="shopcart_card_main">
+            <div class="shopcart_inner_main">
+                <div class="shopcart_inner_pro1">
+                    <div class="shopcart_inner_pro2">
+                        <span>3D</span>
+                    </div>
+                </div>
+                <div class="shopcart_inner_content">
+                    <div class="shopcart_card_title">
+                        <div>
+                            <h3>Custom Miniature Figure</h3>
+                            <h6>miniature_warrior_v2.stl</h6>
+                            <p><span>Uploaded:</span>Dec 15, 2024</p>
+                            <p><span>File size:</span>2.4 MB</p>
+                        </div>
+                        <a href="#">Remove</a>
+                    </div>
+                    <div class="shopcart_inputs_main">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Material</label>
+                                    <input type="text" placeholder="PLA - $25/part">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Color</label>
+                                    <input type="text" placeholder="White">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Layer Height</label>
+                                    <input type="text" placeholder="0.1 mm">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Infill Density</label>
+                                    <input type="text" placeholder="20% (Standard)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Priority</label>
+                                    <input type="text" placeholder="(Standard)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_terms_input">
+                                    <input type="checkbox" id="Supp_mat">
+                                    <label for="Supp_mat">Add Support Material</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shopcart_last_qnty">
+                            <div class="shopcart_last_qnty_inner_main">
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Qty:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Copies:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Print time: 12.4 hrs</label>
+                                </div>
+                            </div>
+                            <div class="shopcart_last_qnty_txt">
+                                <h5>$24.99</h5>
+                                <p>$24.99 each</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shopcart_inner_main">
+                <div class="shopcart_inner_pro1">
+                    <div class="shopcart_inner_pro2">
+                        <span>3D</span>
+                    </div>
+                </div>
+                <div class="shopcart_inner_content">
+                    <div class="shopcart_card_title">
+                        <div>
+                            <h3>Architectural Model Base</h3>
+                            <h6>building_foundation.stl</h6>
+                            <p><span>Uploaded:</span>Dec 15, 2024</p>
+                            <p><span>File size:</span>2.4 MB</p>
+                        </div>
+                        <a href="#">Remove</a>
+                    </div>
+                    <div class="shopcart_inputs_main">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Material</label>
+                                    <input type="text" placeholder="PLA - $25/part">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Color</label>
+                                    <input type="text" placeholder="White">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Layer Height</label>
+                                    <input type="text" placeholder="0.1 mm">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Infill Density</label>
+                                    <input type="text" placeholder="20% (Standard)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Priority</label>
+                                    <input type="text" placeholder="(Standard)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_terms_input">
+                                    <input type="checkbox" id="Supp_mat">
+                                    <label for="Supp_mat">Add Support Material</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shopcart_last_qnty">
+                            <div class="shopcart_last_qnty_inner_main">
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Qty:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Copies:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Print time: 12.4 hrs</label>
+                                </div>
+                            </div>
+                            <div class="shopcart_last_qnty_txt">
+                                <h5>$24.99</h5>
+                                <p>$24.99 each</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shopcart_inner_main">
+                <div class="shopcart_inner_pro1">
+                    <div class="shopcart_inner_pro2">
+                        <span>3D</span>
+                    </div>
+                </div>
+                <div class="shopcart_inner_content">
+                    <div class="shopcart_card_title">
+                        <div>
+                            <h3>Prototype Gear Assembly</h3>
+                            <h6>gear_mechanism.stl</h6>
+                            <p><span>Uploaded:</span>Dec 15, 2024</p>
+                            <p><span>File size:</span>2.4 MB</p>
+                        </div>
+                        <a href="#">Remove</a>
+                    </div>
+                    <div class="shopcart_inputs_main">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Material</label>
+                                    <input type="text" placeholder="PLA - $25/part">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Color</label>
+                                    <input type="text" placeholder="White">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Layer Height</label>
+                                    <input type="text" placeholder="0.1 mm">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Infill Density</label>
+                                    <input type="text" placeholder="20% (Standard)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_inner_input">
+                                    <label for="">Priority</label>
+                                    <input type="text" placeholder="(Standard)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="shopcart_terms_input">
+                                    <input type="checkbox" id="Supp_mat">
+                                    <label for="Supp_mat">Add Support Material</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shopcart_last_qnty">
+                            <div class="shopcart_last_qnty_inner_main">
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Qty:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Copies:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="shopcart_last_qnty_inner">
+                                    <label for="">Print time: 12.4 hrs</label>
+                                </div>
+                            </div>
+                            <div class="shopcart_last_qnty_txt">
+                                <h5>$24.99</h5>
+                                <p>$24.99 each</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shopcart_bottom_cards_main">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-12">
+                     
+                </div>
+                <div class="col-lg-8 col-md-7 col-sm-12">
+                    <div class="step3_order_summary_card">
+                        <h2 class="step3_cards_title">Order Summary</h2>
+                        <div class="step3_os_text_main">
+                            <div class="step3_os_text_inner">
+                                <p>Subtotal</p>
+                                <h6>$341.24</h6>
+                            </div>
+                            <div class="step3_os_text_inner">
+                                <p>Shipping</p>
+                                <h6>$12.99</h6>
+                            </div>
+                            <div class="step3_os_text_inner">
+                                <p>Tax:</p>
+                                <h6>$50.00</h6>
+                            </div>
+                            <div class="step3_os_text_inner">
+                                <p>Support Material:</p>
+                                <h6>$60.00</h6>
+                            </div>
+                            <div class="step3_os_text_inner">
+                                <p>Quality:</p>
+                                <h6>$60.00</h6>
+                            </div>
+                            <div class="step3_os_last_text_inner">
+                                <h6>Subtotal</h6>
+                                <p>$160.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}
