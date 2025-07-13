@@ -16,19 +16,31 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Instant Quote</a>
+                            <a class="nav-link" href="{% url 'Quote:home' %}">Instant Quote</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">3D Modeling</a>
+                            <a class="nav-link" href="{% url 'Quote:service' %}">3D Modeling</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="{% url 'Quote:contact' %}">Contact</a>
                         </li>
                     </ul>
                     <div class="nav_btns_main"> 
-                        <button type="button" class="nav_btn1">Upload File <img src="{% static 'assets/imgs/Save.svg' %}" alt=""></button>
-                        <button type="button" class="UI_btn">Sign In</button>
-                        <button type="button" class="cart_btn"><img src="{% static 'assets/imgs/shoppingcart.svg' %}" alt=""></button> 
+                        <a href="{% url 'Quote:home' %}" class="nav_btn1">
+                            Upload File 
+                            <img src="{% static 'assets/imgs/Save.svg' %}" alt="">
+                        </a>
+                        
+                        <a href="{% if request.user.is_authenticated %}{% url 'accounts:logout' %}{% else %}{% url 'accounts:login' %}{% endif %}" class="UI_btn">
+                            {% if request.user.is_authenticated %}Log out{% else %}Sign In{% endif %}
+                        </a>
+                        
+                        <a href="{% url 'Quote:shoppingcart' %}" class="cart_btn">
+                            <img src="{% static 'assets/imgs/shoppingcart.svg' %}" alt="">
+                        </a>
+                        {% comment %} <button type="button" class="nav_btn1">Upload File <img src="{% static 'assets/imgs/Save.svg' %}" alt=""></button>
+                        <button type="button" class="UI_btn">{% if request.user.is_authenticated %}Log out{% else %}Sign In{% endif %}</button>
+                        <button type="button" class="cart_btn"><img src="{% static 'assets/imgs/shoppingcart.svg' %}" alt=""></button>  {% endcomment %}
                     </div>
                 </div>
             </div>

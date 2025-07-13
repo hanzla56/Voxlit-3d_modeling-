@@ -15,21 +15,29 @@
     <div class="auth-container">
         <div class="auth-card">
             <h2 class="brand-title">Voxelit</h2>
-            <form>
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            <form method='post' action="{% url 'accounts:login' %}">
+                {% csrf_token %}
                 <div class="form-group">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-input" placeholder="Enter your email" />
+                    <input type="email" name="email" class="form-input" placeholder="Enter your email" />
                 </div>
 
                 <div class="form-group mb-2">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-input" placeholder="Enter your password" />
+                    <input type="password" name="password" class="form-input" placeholder="Enter your password" />
                 </div>
                 <div class="forgot-wrap text-end mt-0 mb-4">
                     <a href="{% url 'accounts:forgot-password' %}" class="forgot-link">Forgot password?</a>
                 </div>
-                <a href="{% url 'accounts:signup' %}">
-                    <button class="main-btn" type="button">Login</button>
+                <a>
+                    <button class="main-btn" type="submit">Login</button>
                 </a>
                 <div class="forgot-wrap">
                     Don't have an account? <a href="{% url 'accounts:signup' %}" class="forgot-link">Sign Up</a>

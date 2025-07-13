@@ -30,5 +30,8 @@
       line-height: 27px;
       letter-spacing: 0%;
       color: #D7531B;
-
-  }
+      
+}
+.service-btn-container button{
+      max-width: 300px !important;
+}

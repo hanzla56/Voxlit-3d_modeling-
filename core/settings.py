@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 import os
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(override=True)
 
 # Now access the keys
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
