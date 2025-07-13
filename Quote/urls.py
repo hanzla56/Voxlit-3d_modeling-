@@ -6,6 +6,9 @@ app_name= "Quote"
 
 urlpatterns = [
     path('',index,name='home'),
+
+    path('home-main', homeMain,name='home-main'),
+
     path("save-quote/", save_quote, name="save_quote"),
 
     path('shoppingcart/',shoppingcart,name='shoppingcart'),
