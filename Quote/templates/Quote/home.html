@@ -1,0 +1,796 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+{% endblock css %}
+{% block content %}
+
+<section class="home-main-section">
+    <section class="header_section sticky-header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg border-0" style="background: none;">
+                <div class="container p-0">
+                    <a class="navbar-brand" href="#"><img src="{% static 'assets/imgs/logo.svg' %}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Instant Quote</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">3D Modeling</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="nav_btns_main">
+                            <button type="button" class="nav_btn1">Upload File <img
+                                    src="{% static 'assets/imgs/Save.svg' %}" alt=""></button>
+                            <button type="button" class="UI_btn">Sign In</button>
+                            <button type="button" class="cart_btn"><img
+                                    src="{% static 'assets/imgs/shoppingcart.svg' %}" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <div class="home-hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="home-hero-content">
+                        <img src="{% static 'assets/imgs/star1.svg' %}" alt="" class="starimg1">
+                        <span>Precision 3D Printing in France</span>
+                        <h1>
+                            Custom 3D Printed Parts, Built with Accuracy and Care</h1>
+                        <p>
+                            Upload your 3D model, get an instant quote, and receive high-quality FFF
+                            prints—designed,
+                            printed, and shipped with precision from our printing farm in northeast France.
+                        </p>
+                        <div class="home-hero-btns">
+                            <button type="button" class="getBtn">Get Instant Quote <img
+                                    src="{% static 'assets/imgs/dash.svg' %}" alt="H" class="img-fluid"></button>
+                            <button type="button" class="getBtn requestBtn">Request 3D Modeling <i
+                                    class="bi bi-chevron-right"></i></button>
+                        </div>
+                        <div class="home-hero-features">
+                            <h6>
+                                <img src="{% static 'assets/imgs/user.svg' %}" alt="">
+                                Shipping worldwide
+                            </h6>
+                            <h6>
+                                <img src="{% static 'assets/imgs/category-2.svg' %}" alt="">
+                                Secure File Upload
+                            </h6>
+                            <h6>
+                                <img src="{% static 'assets/imgs/battery-empty.svg' %}" alt="">
+                                ISO 9001 & ISO 13485
+                            </h6>
+                        </div>
+                        <img src="{% static 'assets/imgs/star2.svg' %}" alt="" class="starimg2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aboutVoxelit">
+        <div class="container">
+            <div class="row flex-lg-row flex-column-reverse">
+                <div class="col-md-7">
+                    <div class="aboutContent">
+                        <h1>About <span>Voxelit</span></h1>
+                        <p>
+                            Welcome to our 3D printing farm located in the <span>northeast of France.</span>
+                        </p>
+                        <p>
+                            We specialize in Fused <span>Filament Fabrication (FFF)</span> to deliver reliable,
+                            high-quality parts
+                            tailored to your needs. Whether you need to upload a model or request a custom one, we’ll
+                            bring your ideas to life — every part <span>carefully checked</span> and <span>shipped with
+                                precision</span>.
+                        </p>
+                        <p>
+                            Whether you're a maker, designer, or a company in need of custom parts, we’re here to turn
+                            your <span>ideas</span> into <span>reality</span> with dedication and precision.
+                        </p>
+                        <button type="button" class="getBtn mt-4">Learn More<i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <h6 class="mapSub">Our Workshop – <span>Northeast France</span> </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="our-services-section">
+        <div class="container">
+            <div class="main-title">
+                <h1>Our Services</h1>
+                <p>
+                    From file upload to final delivery — Voxelit offers a complete 3D printing experience tailored to
+                    your needs.
+                </p>
+            </div>
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-xl-6 col-lg-12 mt-4">
+                    <div class="serviceCard d-flex">
+                        <div class="cardImage">
+                            <img src="{% static 'assets/imgs/1.png' %}" alt="Production Parts" />
+                        </div>
+                        <div class="cardContent">
+                            <h5>Production Parts</h5>
+                            <p>We manufacture durable, end-use parts with consistent quality — ideal for short runs,
+                                replacement components, or customized builds.</p>
+                            <button class="cardBtn">Get Production Quote <i class="bi bi-plus"></i></button>
+                        </div>
+                        <div class="cardBadge">
+                            <div class="numDiv">
+                                1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-xl-6 col-lg-12 mt-4">
+                    <div class="serviceCard d-flex">
+                        <div class="cardImage">
+                            <img src="{% static 'assets/imgs/2.png' %}" alt="Rapid Prototyping" />
+                        </div>
+                        <div class="cardContent">
+                            <h5>Rapid Prototyping</h5>
+                            <p>Quickly turn your 3D concepts into real-world models with fast, affordable FFF-based
+                                prototyping. Perfect for testing, validating, and iterating designs.</p>
+                            <button class="cardBtn">Start a Prototype <i class="bi bi-plus"></i></button>
+                        </div>
+                        <div class="cardBadge">
+                            <div class="numDiv">
+                                2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-xl-6 col-lg-12 mt-4">
+                    <div class="serviceCard d-flex">
+                        <div class="cardImage">
+                            <img src="{% static 'assets/imgs/3.png' %}" alt="Ecommerce Integration" />
+                        </div>
+                        <div class="cardContent">
+                            <h5>Ecommerce Integration</h5>
+                            <p>Seamlessly connect your product catalog with our 3D printing capabilities. Automate order
+                                flow from your store to our printers.</p>
+                            <button class="cardBtn">Integrate Now <i class="bi bi-plus"></i></button>
+                        </div>
+                        <div class="cardBadge">
+                            <div class="numDiv">
+                                3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-xl-6 col-lg-12 mt-4">
+                    <div class="serviceCard d-flex">
+                        <div class="cardImage">
+                            <img src="{% static 'assets/imgs/4.png' %}" alt="Precision Printing" />
+                        </div>
+                        <div class="cardContent">
+                            <h5>Precision Printing</h5>
+                            <p>Every part is printed with exacting standards, quality-checked, and shipped securely. We
+                                prioritize precision, consistency, and reliability.</p>
+                            <button class="cardBtn">Print with Voxelit <i class="bi bi-plus"></i></button>
+                        </div>
+                        <div class="cardBadge">
+                            <div class="numDiv">
+                                4
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="material-section">
+        <div class="container">
+            <div class="main-title">
+                <h1>Materials & Technology We Support</h1>
+                <p>
+                    Harness the right material for your project — from prototyping to production.
+                </p>
+            </div>
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="materialCard">
+                        <img src="{% static 'assets/imgs/5.png' %}" alt="Carbon Fiber/Nylon" class="materialImg" />
+                        <div class="materialText">
+                            <h6>Carbon Fiber/Nylon</h6>
+                            <p>
+                                Carbon fiber/nylon filament is a strong composite material combining nylon with carbon
+                                fibers for enhanced strength, stiffness, and heat resistance—ideal for functional parts
+                                and high-performance prototypes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="materialCard">
+                        <img src="{% static 'assets/imgs/6.png' %}" alt="PLA" class="materialImg" />
+                        <div class="materialText">
+                            <h6>PLA</h6>
+                            <p>
+                                PLA (Polylactic Acid) is a biodegradable thermoplastic made from renewable sources like
+                                corn starch, widely used in FFF 3D printing for its ease of use, low warping, and
+                                variety of colors and blends.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="materialCard">
+                        <img src="{% static 'assets/imgs/7.png' %}" alt="TPU" class="materialImg" />
+                        <div class="materialText">
+                            <h6>TPU</h6>
+                            <p>
+                                TPU (Thermoplastic Polyurethane) is a flexible, rubber-like filament known for its
+                                elasticity, impact resistance, and durability. It's ideal for making gaskets, phone
+                                cases, shoe soles, and other wearable or functional parts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="materialCard">
+                        <img src="{% static 'assets/imgs/8.png' %}" alt="PETG" class="materialImg" />
+                        <div class="materialText">
+                            <h6>PETG</h6>
+                            <p>
+                                PETG (Polyethylene Terephthalate Glycol) is a strong, durable 3D printing filament that
+                                combines the toughness of ABS with the ease of PLA. It resists impact, moisture, and
+                                chemicals, making it ideal for functional and outdoor parts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="our-services-section">
+        <div class="container">
+            <div class="main-title">
+                <h1>What Can We Print for You?</h1>
+                <p>
+                    From functional prototypes to wearable accessories, Voxelit is equipped to handle a <br
+                        class="d-md-block d-none"> wide range of 3D printing categories with precision and care.
+                </p>
+            </div>
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="productCard">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/9.png' %}" alt="Mechanical Parts" />
+                            <span class="badgeTag orange">INDUSTRIAL</span>
+                            <span class="itemCount">2,847 items</span>
+                        </div>
+                        <div class="productContent">
+                            <h6>Industrial Tools</h6>
+                            <p>Jigs, fixtures, and replacement parts</p>
+                            <div class="priceStock">
+                                <span class="price">STARTING FROM</span>
+                                <span class="stock"><span class="dot green"></span> In Stock</span>
+                            </div>
+                            <div class="priceStock">
+                                <span class="price"><strong>$12.99</strong></span>
+                                <div class="rating">
+                                    <span class="star">★</span> 4.8 Rating
+                                </div>
+                            </div>
+                            <hr />
+                            <button class="viewAllBtn">View all →</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="productCard">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/10.png' %}" alt="Wearables" />
+                            <span class="badgeTag red">CUSTOM</span>
+                            <span class="itemCount">2,847 items</span>
+                        </div>
+                        <div class="productContent">
+                            <h6>Industrial Tools</h6>
+                            <p>Jigs, fixtures, and replacement parts</p>
+                            <div class="priceStock">
+                                <span class="price">STARTING FROM</span>
+                                <span class="stock"><span class="dot green"></span> In Stock</span>
+                            </div>
+                            <div class="priceStock">
+                                <span class="price"><strong>$12.99</strong></span>
+                                <div class="rating">
+                                    <span class="star">★</span> 4.8 Rating
+                                </div>
+                            </div>
+                            <hr />
+                            <button class="viewAllBtn">View all →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="productCard">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/11.png' %}" alt="Industrial Tools" />
+                            <span class="badgeTag orange">INDUSTRIAL</span>
+                            <span class="itemCount">2,847 items</span>
+                        </div>
+                        <div class="productContent">
+                            <h6>Industrial Tools</h6>
+                            <p>Jigs, fixtures, and replacement parts</p>
+                            <div class="priceStock">
+                                <span class="price">STARTING FROM</span>
+                                <span class="stock"><span class="dot green"></span> In Stock</span>
+                            </div>
+                            <div class="priceStock">
+                                <span class="price"><strong>$12.99</strong></span>
+                                <div class="rating">
+                                    <span class="star">★</span> 4.8 Rating
+                                </div>
+                            </div>
+                            <hr />
+                            <button class="viewAllBtn">View all →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                    <div class="productCard">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/12.png' %}" alt="Medical Equipment's" />
+                            <span class="badgeTag orange">HEALTH & CARE</span>
+                            <span class="itemCount">2,847 items</span>
+                        </div>
+                        <div class="productContent">
+                            <h6>Industrial Tools</h6>
+                            <p>Jigs, fixtures, and replacement parts</p>
+                            <div class="priceStock">
+                                <span class="price">STARTING FROM</span>
+                                <span class="stock"><span class="dot green"></span> In Stock</span>
+                            </div>
+                            <div class="priceStock">
+                                <span class="price"><strong>$12.99</strong></span>
+                                <div class="rating">
+                                    <span class="star">★</span> 4.8 Rating
+                                </div>
+                            </div>
+                            <hr />
+                            <button class="viewAllBtn">View all →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="material-section">
+        <div class="container">
+            <div class="main-title">
+                <h1>Get Your Custom Parts Quickly with Our Streamlined 3D Printing Process</h1>
+                <p>
+                    Seamlessly turn your idea into a ready-to-use 3D printed part in just three steps.
+                </p>
+            </div>
+            <div class="row">
+                <!-- Step 1 -->
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="step-card">
+                        <div class="step-header">
+                            <img src="{% static 'assets/imgs/star.svg' %}" alt="Medical Equipment's" />
+                            <span class="step-number">01</span>
+                        </div>
+                        <h5 class="step-title">Upload Your 3D File</h5>
+                        <p class="step-desc">
+                            Choose your mesh file (.STL or .OBJ), select material and quality preferences, and get an
+                            instant quote powered by our backend engine.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="step-card">
+                        <div class="step-header">
+                            <img src="{% static 'assets/imgs/star.svg' %}" alt="Medical Equipment's" />
+                            <span class="step-number">02</span>
+                        </div>
+                        <h5 class="step-title">We 3D Print It</h5>
+                        <p class="step-desc">
+                            Once confirmed, your model is printed using industrial-grade FFF or SLS technology, ensuring
+                            high quality and dimensional accuracy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="step-card">
+                        <div class="step-header">
+                            <img src="{% static 'assets/imgs/star.svg' %}" alt="Medical Equipment's" />
+                            <span class="step-number">03</span>
+                        </div>
+                        <h5 class="step-title">Receive It at Your Doorstep</h5>
+                        <p class="step-desc">
+                            Every part is quality checked and shipped securely. You get your finished product, ready to
+                            use — fast, reliable, and hassle-free.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="our-services-section">
+        <div class="container">
+            <div class="main-title">
+                <h1 class="text-center">Frequently Asked Questions</h1>
+                <p class="text-center">
+                    Got questions? We’ve got answers. Here’s everything you need to know about getting your parts 3D
+                    printed with Voxelit.
+                </p>
+            </div>
+            <div class="px-sm-5">
+                <ul class="nav nav-pills faq-tabs" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                            aria-selected="true">About Us</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">Our Services</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                            aria-selected="false">Support</button>
+                    </li>
+                </ul>
+                <div class="tab-content mt-4" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                        aria-labelledby="pills-home-tab" tabindex="0">
+                        <div class="accordion accordion-flush faqAccordion" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        How do I get an instant quote for my 3D print?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            We currently support standard 3D mesh files like .STL and .OBJ. If you have
+                                            a different file type, please <a href="#">contact us</a> and we’ll help you
+                                            convert it for printing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        Which file formats do you accept?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            We currently support standard 3D mesh files like .STL and .OBJ. If you have
+                                            a different file type, please <a href="#">contact us</a> and we’ll help you
+                                            convert it for printing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                        How long will my order take to produce and ship?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            We currently support standard 3D mesh files like .STL and .OBJ. If you have
+                                            a different file type, please <a href="#">contact us</a> and we’ll help you
+                                            convert it for printing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                        aria-controls="flush-collapseFour">
+                                        Can Voxelit help me design a 3D file from scratch?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            We currently support standard 3D mesh files like .STL and .OBJ. If you have
+                                            a different file type, please <a href="#">contact us</a> and we’ll help you
+                                            convert it for printing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                        aria-controls="flush-collapseFive">
+                                        Where is Voxelit located? Do you ship internationally?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            We are based in North East France, and proudly ship our 3D printed parts
+                                            worldwide. All prints are carefully packaged and delivered with reliable
+                                            carriers.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                        tabindex="0">...</div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                        tabindex="0">...</div>
+                </div>
+                <div class="faq-footer">
+                    <div class="footer-text">
+                        <h4>Still have question?</h4>
+                        <p>We’re here to help — reach out anytime.</p>
+                    </div>
+                    <button class="contact-btn">Get in touch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="printing-section">
+        <div class="container">
+            <div class="row flex-lg-row flex-column-reverse">
+                <div class="col-md-6">
+                    <div class="printing-content">
+                        <h1>
+                            Why Choose Voxelit’s 3D Printing Solutions for Your 3D Models?
+                        </h1>
+                        <p>
+                            Experience precision, speed, and reliability with our end-to-end 3D printing services.
+                            Whether you're prototyping or producing final parts, Voxelit delivers quality you can count
+                            on.
+                        </p>
+                        <button type="button" class="getBtn">Get Instant Quote
+                            <img src="{% static 'assets/imgs/dash.svg' %}" alt="H" class="img-fluid"></button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'assets/imgs/print.png' %}" alt="M" class="img-fluid w-100" />
+                </div>
+            </div>
+            <div class="row mt-sm-5 mt-4">
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="feature-card">
+                        <div class="icon-circle">
+                            <img src="{% static 'assets/imgs/icon1.svg' %}" alt="Precision Icon" />
+                        </div>
+                        <h4>Precision Manufacturing</h4>
+                        <p>Industry-leading accuracy with tolerances down to ±0.1mm for critical applications</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="feature-card">
+                        <div class="icon-circle">
+                            <img src="{% static 'assets/imgs/box-add.svg' %}" alt="Turnaround Icon" />
+                        </div>
+                        <h4>Rapid Turnaround</h4>
+                        <p>From design to delivery in as little as 24 hours for urgent projects</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="feature-card">
+                        <div class="icon-circle">
+                            <img src="{% static 'assets/imgs/icon2.svg' %}" alt="Quality Icon" />
+                        </div>
+                        <h4>Quality Guarantee</h4>
+                        <p>100% satisfaction guarantee with rigorous quality control at every step</p>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 mt-4">
+                    <div class="rating-note">
+                        <span>Trusted by 500+ companies worldwide</span>
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-value">4.9/5 rating</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="our-services-section">
+        <div class="container">
+            <div class="main-title">
+                <h1 class="text-center">From the Blog</h1>
+                <p class="text-center">
+                    Insights, tips, and updates to help you get the most from 3D printing with Voxelit.
+                </p>
+            </div>
+            <div class="row">
+                <!-- Article 1 -->
+<div class="col-xl-4 col-lg-6 mt-4">
+                    <div class="article-card">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/13.png' %}" alt="3D Printer" class="article-img">
+                            <span class="badgeTag orange">FEATURED</span>
+                            <span class="itemCount">8 min read</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="user-card">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="{% static 'assets/imgs/user.png' %}" alt="Profile Picture" class="user-avatar">
+                                    <div class="user-details">
+                                        <div class="user-name">Dr. Sarah Chen</div>
+                                        <div class="user-role">Materials Engineer</div>
+                                    </div>
+                                </div>
+                                <div class="user-date">March 15, 2024</div>
+                            </div>
+                            <div class="user-links">
+                                <a href="#" class="user-link">Materials Science</a>
+                                <a href="#" class="user-link">FFF Printing</a>
+                            </div>
+                            <h5 class="article-title">Beginner’s Guide to 3D Printing: What You Need to Know</h5>
+                            <p class="article-description">Just getting started? Learn the basics of how 3D printing works and what you’ll need to begin your first project.</p>
+                            <div class="article-footer">
+                                <div class="blog-rating">
+                                    <span><i class="bi bi-star-fill"></i> 4.9</span> | <span><i class="bi bi-clock"></i> 2.3k views</span>
+                                </div>
+                                <a href="#" class="read-more">Read Full Article <i class="bi bi-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="col-xl-4 col-lg-6 mt-4">
+                    <div class="article-card">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/14.png' %}" alt="3D Printer" class="article-img">
+                            <span class="badgeTag orange">FEATURED</span>
+                            <span class="itemCount">8 min read</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="user-card">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="{% static 'assets/imgs/user.png' %}" alt="Profile Picture" class="user-avatar">
+                                    <div class="user-details">
+                                        <div class="user-name">Dr. Sarah Chen</div>
+                                        <div class="user-role">Materials Engineer</div>
+                                    </div>
+                                </div>
+                                <div class="user-date">March 15, 2024</div>
+                            </div>
+                            <div class="user-links">
+                                <a href="#" class="user-link">Materials Science</a>
+                                <a href="#" class="user-link">FFF Printing</a>
+                            </div>
+                            <h5 class="article-title">Choosing the Right Material for Your 3D Model</h5>
+                            <p class="article-description">Not sure which material suits your design best? We compare the top choices for strength, flexibility, and cost.</p>
+                            <div class="article-footer">
+                                <div class="blog-rating">
+                                    <span><i class="bi bi-star-fill"></i> 4.9</span> | <span><i class="bi bi-clock"></i> 2.3k views</span>
+                                </div>
+                                <a href="#" class="read-more">Read Full Article <i class="bi bi-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="col-xl-4 col-lg-6 mt-4">
+                    <div class="article-card">
+                        <div class="productImage">
+                            <img src="{% static 'assets/imgs/15.png' %}" alt="3D Printer" class="article-img">
+                            <span class="badgeTag orange">FEATURED</span>
+                            <span class="itemCount">8 min read</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="user-card">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="{% static 'assets/imgs/user.png' %}" alt="Profile Picture" class="user-avatar">
+                                    <div class="user-details">
+                                        <div class="user-name">Dr. Sarah Chen</div>
+                                        <div class="user-role">Materials Engineer</div>
+                                    </div>
+                                </div>
+                                <div class="user-date">March 15, 2024</div>
+                            </div>
+                            <div class="user-links">
+                                <a href="#" class="user-link">Materials Science</a>
+                                <a href="#" class="user-link">FFF Printing</a>
+                            </div>
+                            <h5 class="article-title">How Businesses Are Using 3D Printing to Save Time and Costs</h5>
+                            <p class="article-description">Discover how companies are integrating 3D printing to speed
+                                up prototyping and cut down manufacturing delays.</p>
+                            <div class="article-footer">
+                                <div class="blog-rating">
+                                    <span><i class="bi bi-star-fill"></i> 4.9</span> | <span><i class="bi bi-clock"></i> 2.3k views</span>
+                                </div>
+                                <a href="#" class="read-more">Read Full Article <i class="bi bi-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+{% block js %}
+<script>
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('.sticky-header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+{% endblock js %}

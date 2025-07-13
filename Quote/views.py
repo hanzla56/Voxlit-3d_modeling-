@@ -19,6 +19,9 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 def index(request):
       return render(request,'Quote/index.html')
 
+def homeMain(request):
+      return render(request,'Quote/home.html')
+
 def shoppingcart(request):
       return render(request,'Quote/shoppingcart.html')
   
